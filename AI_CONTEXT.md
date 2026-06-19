@@ -2,172 +2,89 @@
 
 # Shruti Sadhana
 
-Version: 1.0
+Purpose: Quick briefing for AI assistants. Contains accepted decisions, implementation context, and documentation hierarchy.
 
-Purpose: Quick briefing for AI assistants. Contains project facts, accepted decisions, scope boundaries, and implementation context.
+## Documentation Hierarchy
+
+Vision & Strategy
+→ 00-project/project-context.md
+
+Product Definition
+→ 01-product/PRD.md
+
+MVP Scope
+→ 01-product/MVP-SCOPE.md
+
+Feature Inventory
+→ 02-features/FEATURE_INDEX.md
+
+Detailed Requirements
+→ FRD documents
+
+Implementation
+→ Architecture and source code repositories
 
 ---
 
 ## Project Summary
 
-| Item             | Value                                                  |
-| ---------------- | ------------------------------------------------------ |
-| Product          | Sanskrit Stotra Learning, Practice & Parayana Platform |
-| Domain           | Stotra / Stotram Chanting                              |
-| Primary Platform | Mobile App                                             |
-| Status           | MVP Planning                                           |
+Product: Sanskrit Stotram Learning, Practice & Parayana Platform
+Primary Platform: Mobile App
+Status: MVP Planning
+
+Core Journey:
+Learn → Practice → Parayana
 
 ---
 
-## Core User Journey
+## Accepted Product Decisions
 
-```text
-Learn
-  ↓
-Practice
-  ↓
-Parayana
-```
-
----
-
-## MVP Modules
-
-| Module                 | Included |
-| ---------------------- | -------- |
-| Authentication         | Yes      |
-| User Preferences       | Yes      |
-| Course Catalog         | Yes      |
-| Course Detail          | Yes      |
-| Shloka Learning        | Yes      |
-| Audio Playback         | Yes      |
-| Recording & Playback   | Yes      |
-| Progress Tracking      | Yes      |
-| Notifications          | Yes      |
-| Poojaghar              | Yes      |
-| Participatory Chanting | Yes      |
-| Referrals              | Yes      |
-| Donations              | Yes      |
+- Flutter Frontend
+- NestJS Backend
+- MySQL Database
+- Firebase Authentication
+- Google Cloud Infrastructure
+- Personalized Puja Ghar
+- Slow/Medium Speed Audio as Premium Feature
+- AI Pronunciation Feedback Deferred to Phase 2
 
 ---
 
-## Deferred Features
+## Current MVP Modules
 
-| Feature                     | Status       |
-| --------------------------- | ------------ |
-| AI Pronunciation Assessment | Future Phase |
-| Deep Meanings & Commentary  | Future Phase |
-| Offline Mode                | Future Phase |
-
----
-
-## Content Structure
-
-```text
-Course
- └── Section
-       └── Shloka
-```
-
-Examples:
-
-### Lalita Sahasranama
-
-* Dhyana
-* Nyasa
-* Main Sahasranama
-* Uttara Nyasa
-
-### Vishnu Sahasranama
-
-* Dhyana
-* Nyasa
-* Main Sahasranama
-* Phalashruti
+- Authentication
+- Onboarding
+- Home Dashboard
+- Learning Library
+- Course Detail
+- Lesson Experience
+- Progress Tracking
+- Puja Ghar
+- Subscription System
 
 ---
 
-## Sanskrit Guru Model
+## Scope Authority
 
-| Item              | Value          |
-| ----------------- | -------------- |
-| Real Teachers     | Yes            |
-| Recorded Chanting | Yes            |
-| Recorded Guidance | Yes            |
-| Live Teaching     | No             |
-| Multiple Teachers | Future Support |
+Product Scope:
+→ 01-product/PRD.md
 
----
+Included / Excluded Features:
+→ 01-product/MVP-SCOPE.md
 
-## Accepted Decisions
+Feature Inventory:
+→ 02-features/FEATURE_INDEX.md
 
-| Decision                               | Status   |
-| -------------------------------------- | -------- |
-| Flutter Frontend                       | Accepted |
-| NestJS Backend                         | Accepted |
-| MySQL Database                         | Accepted |
-| Firebase Authentication                | Accepted |
-| Single Deity Per Poojaghar Session     | Accepted |
-| Participatory Chanting Included In MVP | Accepted |
-| Referral Tree Included In MVP          | Accepted |
-| AI Pronunciation Deferred              | Accepted |
-
----
-
-## Technology Stack
-
-| Area           | Technology                       |
-| -------------- | -------------------------------- |
-| Frontend       | Flutter                          |
-| Backend        | NestJS                           |
-| Database       | MySQL                            |
-| Authentication | Firebase Auth                    |
-| Notifications  | Firebase Cloud Messaging         |
-| Storage        | Firebase Storage / Cloud Storage |
-| Hosting        | Google Cloud                     |
-
----
-
-## Documentation Reading Order
-
-### Product Understanding
-
-```text
-AI_CONTEXT.md
-↓
-project-context.md
-↓
-PRD.md
-```
-
-### Feature Design
-
-```text
-AI_CONTEXT.md
-↓
-Relevant FRD
-↓
-Relevant TDS
-```
-
-### Feature Implementation
-
-```text
-AI_CONTEXT.md
-↓
-Relevant FRD
-↓
-Relevant TDS
-↓
-Architecture Documents
-```
+Detailed Behaviour:
+→ FRD Documents
 
 ---
 
 ## Guidelines For AI Assistants
 
-1. Read only relevant documents.
-2. Follow documented architecture and conventions.
-3. Treat ADRs as source of truth for accepted decisions.
-4. Do not treat research notes or brainstorming discussions as requirements.
-5. Prefer extending existing patterns over introducing new patterns.
+1. Read project-context.md before making product recommendations.
+2. Treat PRD.md as the source of product requirements.
+3. Treat MVP-SCOPE.md as the source of scope boundaries.
+4. Treat FEATURE_INDEX.md as the source of feature inventory.
+5. Do not treat brainstorming notes as accepted requirements.
+6. Prefer existing patterns and documented decisions.
