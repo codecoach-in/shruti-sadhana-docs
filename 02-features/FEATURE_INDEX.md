@@ -1,89 +1,44 @@
 # Feature Index
 
-## Purpose
-
-This document is the master inventory of product features.
-
-Every significant feature should have:
-
-- A unique feature ID
-- A status
-- An owner (optional)
-- A corresponding FRD
-
-The Feature Index acts as the single source of truth for scope management.
-
----
-
-# Status Definitions
-
-| Status | Meaning |
-|----------|----------|
-| Planned | Approved but not yet specified |
-| In Design | UX and requirements being defined |
-| Ready | FRD completed and ready for implementation |
-| In Development | Actively being built |
-| Completed | Delivered |
-| Deferred | Explicitly postponed |
-| Future | Outside MVP |
-
----
-
-# MVP Features
-
-| ID | Feature | Status | FRD |
-|----|----------|----------|----------|
-| FRD-001 | Authentication | Planned | FRD-001-Authentication.md |
-| FRD-002 | Onboarding | Planned | FRD-002-Onboarding.md |
-| FRD-003 | Home Dashboard | Planned | FRD-003-Home.md |
-| FRD-004 | Learning Library | Planned | FRD-004-Learning-Library.md |
-| FRD-005 | Course Detail | Planned | FRD-005-Course-Detail.md |
-| FRD-006 | Lesson Experience | Planned | FRD-006-Lesson-Experience.md |
-| FRD-007 | Puja Ghar | Planned | FRD-007-Puja-Ghar.md |
-| FRD-008 | Progress Tracking | Planned | FRD-008-Progress.md |
-| FRD-009 | Subscription & Paywall | Planned | FRD-009-Subscriptions.md |
-| FRD-010 | Profile & Settings | Planned | FRD-010-Profile.md |
-
----
-
-# Future Features
-
-## AI Learning Features
+## MVP Features
 
 | ID | Feature | Status |
 |----|----------|----------|
-| FUT-001 | Pronunciation Feedback | Future |
-| FUT-002 | Pronunciation Scoring | Future |
-| FUT-003 | Sanskrit Alignment Engine | Future |
-| FUT-004 | Personalized Learning Suggestions | Future |
+| FRD-001 | Authentication | Planned |
+| FRD-002 | Onboarding | Planned |
+| FRD-003 | Home | Planned |
+| FRD-004 | Learning Library | Planned |
+| FRD-005 | Course Detail | Planned |
+| FRD-006 | Lesson Experience | Planned |
+| FRD-007 | Practice | Planned |
+| FRD-008 | Progress Tracking | Planned |
+| FRD-009 | Puja Ghar | Planned |
+| FRD-010 | Subscriptions | Planned |
+| FRD-011 | Participatory Chanting | Planned |
+| FRD-012 | Referrals | Planned |
+| FRD-013 | Donations | Planned |
+| FRD-014 | Profile & Settings | Planned |
 
 ---
 
-## Community Features
+## Future Features
 
-| ID | Feature | Status |
-|----|----------|----------|
-| FUT-101 | Practice Groups | Future |
-| FUT-102 | Community Discussions | Future |
-| FUT-103 | Guided Group Parayan | Future |
-| FUT-104 | Community Challenges | Future |
+### AI Features
 
----
+- Pronunciation Feedback
+- Pronunciation Scoring
+- Sanskrit Alignment Engine
+- Personalized Recommendations
 
-## Content & Learning Expansion
+### Community Features
 
-| ID | Feature | Status |
-|----|----------|----------|
-| FUT-201 | Learning Paths | Future |
-| FUT-202 | Structured Sadhana Programs | Future |
-| FUT-203 | Advanced Progress Insights | Future |
-| FUT-204 | Live Learning Events | Future |
+- Practice Groups
+- Community Discussions
+- Guided Group Parayan
 
 ---
 
-# Dependency Notes
-
-Core dependency chain:
+## Dependency Flow
 
 Authentication
 → Onboarding
@@ -91,18 +46,18 @@ Authentication
 → Learning Library
 → Course Detail
 → Lesson Experience
+→ Practice
 → Progress Tracking
 
-Puja Ghar integrates with Home and Lesson Experience.
+Puja Ghar and Participatory Chanting integrate with Lesson Experience.
 
-Subscriptions integrate with Learning Library and Lesson Experience.
+Subscriptions, Referrals and Donations are cross-cutting product features.
 
 ---
 
-# Governance Rules
+## Governance
 
-1. Every feature must have a unique ID.
-2. Every MVP feature must have an FRD.
-3. Scope changes must be reflected here before implementation begins.
-4. Deferred features should not appear inside MVP FRDs.
-5. This file is the authoritative feature inventory for Shruti Sadhana.
+- Every MVP feature requires an FRD.
+- FRDs define behaviour.
+- Technical Design documents define implementation.
+- Scope changes must be reflected here first.
