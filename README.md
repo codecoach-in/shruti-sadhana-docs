@@ -8,7 +8,7 @@ Use [PROJECT_INDEX.md](PROJECT_INDEX.md) as the root navigation document for thi
 
 For AI assistant guidance, see:
 - [AI_CONTEXT.md](AI_CONTEXT.md)
-- [00-project/CODEX_CONTEXT.md](00-project/CODEX_CONTEXT.md)
+- [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md)
 
 For accepted decisions, see:
 - [00-project/DECISION_LOG.md](00-project/DECISION_LOG.md)
@@ -17,7 +17,7 @@ For accepted decisions, see:
 
 1. [PROJECT_INDEX.md](PROJECT_INDEX.md)
 2. [AI_CONTEXT.md](AI_CONTEXT.md)
-3. [00-project/CODEX_CONTEXT.md](00-project/CODEX_CONTEXT.md)
+3. [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md)
 4. [00-project/project-context.md](00-project/project-context.md)
 5. [01-product/PRD.md](01-product/PRD.md)
 6. [01-product/MVP-SCOPE.md](01-product/MVP-SCOPE.md)

@@ -10,7 +10,7 @@ Root repository navigation:
 -> [PROJECT_INDEX.md](PROJECT_INDEX.md)
 
 Stable Codex guidance:
--> [00-project/CODEX_CONTEXT.md](00-project/CODEX_CONTEXT.md)
+-> [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md)
 
 Accepted decision summary:
 -> [00-project/DECISION_LOG.md](00-project/DECISION_LOG.md)
@@ -95,7 +95,7 @@ Detailed Behaviour:
 ## Guidelines For AI Assistants
 
 1. Read [PROJECT_INDEX.md](PROJECT_INDEX.md) before navigating the repository.
-2. Read [00-project/CODEX_CONTEXT.md](00-project/CODEX_CONTEXT.md) before making repository changes.
+2. Read [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md) before making repository changes.
 3. Read [00-project/project-context.md](00-project/project-context.md) before making product recommendations.
 4. Treat [01-product/PRD.md](01-product/PRD.md) as the source of product requirements.
 5. Treat [01-product/MVP-SCOPE.md](01-product/MVP-SCOPE.md) as the source of scope boundaries.

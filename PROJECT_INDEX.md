@@ -26,7 +26,7 @@ Out of scope for this milestone:
 ## Recommended Reading Path
 
 1. [AI_CONTEXT.md](AI_CONTEXT.md)
-2. [00-project/CODEX_CONTEXT.md](00-project/CODEX_CONTEXT.md)
+2. [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md)
 3. [00-project/project-context.md](00-project/project-context.md)
 4. [01-product/PRD.md](01-product/PRD.md)
 5. [01-product/MVP-SCOPE.md](01-product/MVP-SCOPE.md)
@@ -55,7 +55,7 @@ Out of scope for this milestone:
 
 For accepted decisions, see [00-project/DECISION_LOG.md](00-project/DECISION_LOG.md).
 
-For guidance on how Codex should work in this repository, see [00-project/CODEX_CONTEXT.md](00-project/CODEX_CONTEXT.md).
+For guidance on how AI agents should work in this repository, see [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md).
 
 ## Future Documentation Milestones
 
