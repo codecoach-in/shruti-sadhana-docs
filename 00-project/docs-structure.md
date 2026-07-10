@@ -4,16 +4,18 @@
 shruti-sadhana-docs/
 
 README.md
+PROJECT_INDEX.md
 AI_CONTEXT.md
 
 00-project/
 │
 ├── README.md
+├── AGENT_GUIDE.md
 ├── project-context.md
 ├── vision-and-principles.md
 ├── personas.md
 ├── glossary.md
-├── roadmap.md
+├── DECISION_LOG.md
 └── changelog.md
 
 01-product/
@@ -21,12 +23,19 @@ AI_CONTEXT.md
 ├── README.md
 ├── PRD.md
 ├── MVP-scope.md
-├── feature-inventory.md
-└── monetization.md
+├── success-metrics.md
+└── success-metrics.md
 
-02-ux/
+02-features/
 │
 ├── README.md
+├── FEATURE_INDEX.md
+└── INDEX.md
+
+03-ux/
+│
+├── README.md
+├── INDEX.md
 ├── user-journeys.md
 ├── navigation.md
 ├── onboarding.md
@@ -38,21 +47,10 @@ AI_CONTEXT.md
 ├── settings.md
 └── design-history.md
 
-03-architecture/
-│
-├── README.md
-├── system-overview.md
-├── frontend-flutter.md
-├── backend-nestjs.md
-├── database-design.md
-├── api-guidelines.md
-├── security.md
-├── storage-and-media.md
-└── integrations.md
-
 04-frd/
 │
 ├── README.md
+├── INDEX.md
 ├── FRD-00-architecture.md
 ├── FRD-01-authentication.md
 ├── FRD-02-content-model.md
@@ -63,9 +61,23 @@ AI_CONTEXT.md
 ├── FRD-07-referrals.md
 └── FRD-08-donations.md
 
-05-technical-design/
+05-architecture/
 │
 ├── README.md
+├── INDEX.md
+├── system-overview.md
+├── frontend-flutter.md
+├── backend-nestjs.md
+├── database-design.md
+├── api-guidelines.md
+├── security.md
+├── storage-and-media.md
+└── integrations.md
+
+06-technical-design/
+│
+├── README.md
+├── INDEX.md
 ├── TDS-authentication.md
 ├── TDS-content-model.md
 ├── TDS-learning.md
@@ -75,44 +87,43 @@ AI_CONTEXT.md
 ├── TDS-referrals.md
 └── TDS-donations.md
 
-06-content/
+07-content/
 │
 ├── README.md
+├── INDEX.md
 ├── content-model.md
 ├── course-structure.md
 ├── guru-model.md
 ├── blessings.md
 └── notifications.md
 
-07-decisions/
+08-decisions/
 │
 ├── README.md
+├── INDEX.md
 ├── ADR-template.md
-├── ADR-001-flutter.md
-├── ADR-002-nestjs.md
-├── ADR-003-single-deity-poojaghar.md
-└── ADR-004-ai-pronunciation-phase2.md
+├── ADR-001-android-first.md
+├── ADR-002-flutter-web.md
+├── ADR-003-secure-media.md
+├── ADR-004-no-offline-downloads.md
+├── ADR-005-separate-admin-console.md
+├── ADR-006-curated-content.md
+└── ADR-007-environment-abstraction.md
 
-08-research/
+09-research/
 │
 ├── README.md
+├── INDEX.md
 ├── participatory-chanting-poc.md
 ├── competitor-analysis.md
 └── future-ideas.md
 
-09-assets/
+10-assets/
 │
 ├── README.md
-│
+├── INDEX.md
 ├── mockups/
-│   │
-│   ├── mobile/
-│   ├── website/
-│   ├── desktop/
-│   └── archived/
-│
 ├── diagrams/
-│
 └── references/
 ```
 
@@ -120,65 +131,46 @@ AI_CONTEXT.md
 
 00-project
 
-* Project identity and long-term context.
-* Stable information every AI should understand.
+* Project identity, long-term context, and AI assistant guidelines.
+* DECISION_LOG.md and AGENT_GUIDE.md.
 
 01-product
 
-* Product requirements.
-* Scope definition.
-* MVP boundaries.
-* Business model.
+* Product requirements, PRD, MVP boundaries, monetization, and success metrics.
 
-02-ux
+02-features
 
-* User experience and screen-level thinking.
-* Navigation and user journeys.
-* Historical UX decisions.
+* Feature inventory lists and status tracking.
 
-03-architecture
+03-ux
 
-* Global engineering standards.
-* Backend architecture.
-* Frontend architecture.
-* Database and integrations.
+* User experience, journeys, mockups, layout/navigation flow thinking, and design history.
 
 04-frd
 
-* Functional requirements.
-* Defines what each feature must do.
+* Functional Requirements Documents defining specific behaviors of each system feature.
 
-05-technical-design
+05-architecture
 
-* Engineering implementation details.
-* APIs, entities, workflows, business rules.
-* Main documents used by coding agents.
+* System-wide architectural designs (diagrams, backend/frontend layout, deployment, integrations).
 
-06-content
+06-technical-design
 
-* Stotra and spiritual content modeling.
-* Guru model.
-* Blessings and notification content.
+* Technical design specifications (APIs, entity logic, module details) for development execution.
 
-07-decisions
+07-content
 
-* Architecture Decision Records (ADRs).
-* Why major decisions were made.
+* Sanskrit content modeling, course structuring, notifications, blessings, and guru details.
 
-08-research
+08-decisions
 
-* Experiments and explorations.
-* Participatory Chanting POC.
-* Competitor studies.
-* Future ideas.
+* Architectural Decision Records (ADRs) explaining "why" choices were made.
 
-09-assets
+09-research
 
-* Mockups.
-* Wireframes.
-* Diagrams.
-* Design references.
-* Historical design iterations.
+* Proof of Concept findings, experiments, competitor research, and user insights.
 
-```
-```
+10-assets
+
+* Graphic designs, mockups, system architecture diagrams, and static media files.
+

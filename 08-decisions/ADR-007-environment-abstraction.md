@@ -23,4 +23,4 @@ Design all core infrastructure integrations around the principle of Environment 
 
 ## Related Documents
 - [ADR-003-secure-media.md](ADR-003-secure-media.md)
-- [system-overview.md](../03-architecture/system-overview.md)
+- [system-overview.md](../05-architecture/system-overview.md)

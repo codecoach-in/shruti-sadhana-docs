@@ -17,6 +17,10 @@ The repository answers three questions:
 
 Research documents capture experiments and Proof of Concept (POC) findings.
 
+### Architecture vs. Technical Design
+- **Architecture (05-architecture)**: Defines how the system-wide components are organized, their relationships, integrations, deployment, and security models (e.g. system overview, deployment architectures).
+- **Technical Design (06-technical-design)**: Defines how a specific module, integration interface, or logic component works at the code level (e.g. Media Module specification, Storage Driver APIs, Auth hooks).
+
 ### Navigation Philosophy
 - Every major folder must contain an `INDEX.md`.
 - The repository root contains `PROJECT_INDEX.md`.
@@ -29,23 +33,22 @@ Research documents capture experiments and Proof of Concept (POC) findings.
 - Add folder-level indexes and root `PROJECT_INDEX.md`.
 - Create `DECISION_LOG.md`.
 
-### Milestone 1.1: Agent Guide Setup (Current Setup)
+### Milestone 1.1: Agent Guide Setup (Completed)
 - Create `AGENT_GUIDE.md`.
 - Clean up outdated `CODEX_CONTEXT.md` and update navigation files.
 
-### Milestone 2: Architectural Decision Records (Current)
-Create Architectural Decision Records (ADRs) in `07-decisions/` for approved decisions using a simple structure (Title, Status, Context, Decision, Alternatives Considered, Consequences, Related Documents):
-- ADR-001: Android First
-- ADR-002: Flutter Web Strategy
-- ADR-003: Secure Media Platform
-- ADR-004: No Offline Downloads
-- ADR-005: Separate Admin Console
-- ADR-006: Curated Content Pipeline
-- ADR-007: Environment Abstraction
+### Milestone 2: Architectural Decision Records (Completed)
+- Author the 7 initial ADRs in the Decisions folder.
+
+### Milestone 2.1: Repository Cleanup & Lifecycle Refactoring (Current)
+- Resolve duplicate architecture folders.
+- Clarify Architecture vs Technical Design.
+- Simplify README so it doesn't duplicate `PROJECT_INDEX.md`.
+- Reorganize directories into an 11-folder lifecycle sequence (00 to 10).
 
 ### Milestone 3: Media Security POC Documentation
-Convert the completed POC into repository documentation under `08-research/`.
-Topics: Executive Summary, Technical Findings, Lessons Learned, Known Limitations, Performance, Security. Reference the validated POC rather than rewriting it.
+- Document the Media Security POC under `09-research/` (Executive Summary, Technical Findings, Lessons Learned, Known Limitations, Performance, Security).
+- Maintain the POC implementation plan as a historical archive under `09-research/`.
 
 ### Milestone 4: Technical Design
 Document the architecture conceptually (no implementation code, no framework-specific details).
@@ -63,6 +66,7 @@ Update PRD, MVP Scope, and Roadmap to reflect the validated architecture and dec
 ## Git Commit Conventions
 - Milestone 1.1: `docs: add agent guide and update navigation`
 - Milestone 2: `docs: add architectural decision records`
+- Milestone 2.1: `docs: refactor folder structure to align with development lifecycle`
 - Milestone 3: `docs: document secure media platform POC`
 - Milestone 4: `docs: add media platform technical design`
 - Milestone 5: `docs: refresh product documentation after architecture validation`

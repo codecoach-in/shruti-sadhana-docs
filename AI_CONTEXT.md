@@ -17,23 +17,19 @@ Accepted decision summary:
 
 ## Documentation Hierarchy
 
-Vision & Strategy
--> [00-project/project-context.md](00-project/project-context.md)
+The repository is structured to represent the natural lifecycle of product development:
 
-Product Definition
--> [01-product/PRD.md](01-product/PRD.md)
-
-MVP Scope
--> [01-product/MVP-SCOPE.md](01-product/MVP-SCOPE.md)
-
-Feature Inventory
--> [02-features/FEATURE_INDEX.md](02-features/FEATURE_INDEX.md)
-
-Detailed Requirements
--> FRD documents
-
-Implementation
--> Architecture and source code repositories
+1. **Vision & Context** -> [00-project/project-context.md](00-project/project-context.md) & [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md)
+2. **Product Requirements** -> [01-product/PRD.md](01-product/PRD.md) & [01-product/MVP-SCOPE.md](01-product/MVP-SCOPE.md)
+3. **Features Inventory** -> [02-features/FEATURE_INDEX.md](02-features/FEATURE_INDEX.md)
+4. **UX & User Journeys** -> [03-ux/INDEX.md](03-ux/INDEX.md)
+5. **Functional Requirements** -> [04-frd/INDEX.md](04-frd/INDEX.md)
+6. **System Architecture** -> [05-architecture/INDEX.md](05-architecture/INDEX.md)
+7. **Technical Design** -> [06-technical-design/INDEX.md](06-technical-design/INDEX.md)
+8. **Content Models** -> [07-content/INDEX.md](07-content/INDEX.md)
+9. **Decision Records (ADRs)** -> [08-decisions/INDEX.md](08-decisions/INDEX.md)
+10. **Research & Experiments** -> [09-research/INDEX.md](09-research/INDEX.md)
+11. **Assets & Mockups** -> [10-assets/INDEX.md](10-assets/INDEX.md)
 
 ## Project Summary
 

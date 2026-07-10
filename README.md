@@ -1,108 +1,39 @@
 # Shruti Sadhana Documentation Repository
 
-This repository is the single source of truth for Shruti Sadhana product, UX, architecture, and engineering decisions.
+Welcome to the documentation repository for the **Shruti Sadhana** project. 
 
-## Start Here
+Shruti Sadhana is a Sanskrit Stotram Learning Platform designed to help devotees learn, practice, and chant sacred stotrams with correct pronunciation and devotional immersion.
 
-Use [PROJECT_INDEX.md](PROJECT_INDEX.md) as the root navigation document for this repository.
+---
 
-For AI assistant guidance, see:
-- [AI_CONTEXT.md](AI_CONTEXT.md)
-- [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md)
+## What is this Repository?
+This repository is the **single source of truth** for all product decisions, user experience flows, functional requirements, system architecture, technical design, and experiments.
 
-For accepted decisions, see:
-- [00-project/DECISION_LOG.md](00-project/DECISION_LOG.md)
+---
 
-## Recommended Reading Order
+## How is it Organized?
+We organize our documentation to reflect the natural **lifecycle of product development**:
 
-1. [PROJECT_INDEX.md](PROJECT_INDEX.md)
-2. [AI_CONTEXT.md](AI_CONTEXT.md)
-3. [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md)
-4. [00-project/project-context.md](00-project/project-context.md)
-5. [01-product/PRD.md](01-product/PRD.md)
-6. [01-product/MVP-SCOPE.md](01-product/MVP-SCOPE.md)
-7. [02-features/FEATURE_INDEX.md](02-features/FEATURE_INDEX.md)
-8. Relevant folder `INDEX.md` files
-9. Relevant FRDs
-10. Relevant architecture and technical design documents
+1. **00-project**: Project identity, context, agent guidelines, decisions, and history.
+2. **01-product**: Product requirements, PRD, and MVP scope.
+3. **02-features**: Feature inventory list and status tracking.
+4. **03-ux**: User journeys, layouts, navigation, and design history.
+5. **04-frd**: Functional Requirements Documents defining feature behavior.
+6. **05-architecture**: System-wide structural design (organization, deployment, security).
+7. **06-technical-design**: Specific module technical designs (APIs, code-level specs).
+8. **07-content**: Sanskrit learning data structure and guru models.
+9. **08-decisions**: Architectural Decision Records (ADRs) capturing "why" decisions were made.
+10. **09-research**: Experiments, proof-of-concept findings, and competitor studies.
+11. **10-assets**: Visual mockups, diagrams, and reference materials.
 
-## Documentation Hierarchy
+---
 
-### Why are we building this?
+## Where should I Start?
 
-[00-project/project-context.md](00-project/project-context.md)
+To navigate the repository, search for files, or check the status of current milestones:
 
-Contains:
-- Vision
-- Problem statement
-- Philosophy
-- Personas
-- Positioning
+### ➔ See [PROJECT_INDEX.md](PROJECT_INDEX.md)
 
-### What product are we building?
-
-[01-product/PRD.md](01-product/PRD.md)
-
-Contains:
-- Product goals
-- Product scope
-- Success metrics
-- Release criteria
-
-### What is included in MVP?
-
-[01-product/MVP-SCOPE.md](01-product/MVP-SCOPE.md)
-
-Contains:
-- Included features
-- Excluded features
-- Launch scope
-- Future phases
-
-### What features exist?
-
-[02-features/FEATURE_INDEX.md](02-features/FEATURE_INDEX.md)
-
-Contains:
-- Feature inventory
-- Dependencies
-- Status tracking
-- Future features
-
-### How should features behave?
-
-FRD documents define feature behavior.
-
-Examples:
-- Authentication
-- Onboarding
-- Learning Library
-- Lesson Experience
-- Puja Ghar
-- Subscriptions
-
-### How should features be implemented?
-
-Architecture and technical design documents define implementation direction.
-
-## Documentation Principles
-
-- Keep documents focused and modular.
-- Avoid large monolithic specifications.
-- Separate vision, scope, requirements, and implementation.
-- Record accepted decisions explicitly.
-- Treat documentation as a living system.
-
-## AI Workflow
-
-Product decisions:
-AI_CONTEXT -> Project Context -> PRD -> MVP Scope -> Feature Index
-
-Feature design:
-AI_CONTEXT -> Feature Index -> FRD
-
-Implementation:
-AI_CONTEXT -> FRD -> Architecture Documents -> Code
-
-This repository contains documentation only and remains the authoritative source for Shruti Sadhana product and engineering decisions.
-
+For AI assistants or developers looking for working guidelines:
+- See **[00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md)** for AI assistant instructions and coding principles.
+- See **[00-project/DECISION_LOG.md](00-project/DECISION_LOG.md)** for a log of approved decisions.
