@@ -59,6 +59,7 @@ Update PRD, MVP Scope, and Roadmap to reflect the validated architecture and dec
 
 ## Working Rules
 - **Principles Over Technologies**: Whenever an ADR discusses technologies (Flutter, NestJS, GCS, Firebase, etc.), treat them as the current implementation context—not the architectural decision itself. The ADR must capture the principle being adopted, not bind the project to a specific framework or vendor unless that choice is itself intentional.
+- **POC Knowledge Distillation**: A Proof of Concept (POC) is not considered complete until its validated findings have been distilled into the repository as research documents. The implementation artifacts (code, scripts, logs, plans) remain with the POC project, while the extracted knowledge must become permanent documentation.
 - **Modularity**: Prefer updating existing files and avoid duplicate information. Keep documents concise.
 - **Cross-Referencing**: Link related files where useful (using relative markdown links).
 - **Git Commit Workflow**: Commit one documentation milestone at a time, using meaningful messages. Push changes after each completed milestone.

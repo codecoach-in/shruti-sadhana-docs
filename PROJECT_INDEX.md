@@ -35,19 +35,19 @@ Purpose: Central navigation index for the Shruti Sadhana documentation repositor
 
 ## Current Milestone
 
-Documentation Milestone 2.1: Repository Cleanup & Lifecycle Refactoring.
+Documentation Milestone 3: Media Security POC Knowledge Extraction.
 
 ### Scope:
-- Reorganize the repository to align with the product lifecycle sequence (00-10).
-- Resolve duplicate architecture folders by merging into `05-architecture/`.
-- Clarify the separation between Architecture (system-wide organization) and Technical Design (module specs).
-- Simplify README and PROJECT_INDEX to remove overlapping navigation guides.
+- Extract and document validated engineering findings from the Media Security POC under `09-research/media-security-poc/`.
+- Establish the validation matrix outlining decisions, goals, and outcomes.
+- Update AGENT_GUIDE.md rules to require POC knowledge distillation in repository files.
 
 ### Completed Milestones:
 - Milestone 1 (Repository Navigation) ✅
 - Milestone 1.1 (Agent Guide Setup) ✅
 - Milestone 2 (Architectural Decision Records) ✅
 - Milestone 2.1 (Repository Cleanup & Lifecycle Refactoring) ✅
+- Milestone 3 (Media Security POC Knowledge Extraction) ✅
 
 ---
 
@@ -55,3 +55,17 @@ Documentation Milestone 2.1: Repository Cleanup & Lifecycle Refactoring.
 
 - For the list of accepted product/tech decisions, see **[00-project/DECISION_LOG.md](00-project/DECISION_LOG.md)**.
 - For detailed context on accepted decisions, see **[08-decisions/INDEX.md](08-decisions/INDEX.md)**.
+
+---
+
+## Documentation Milestones
+
+| Milestone | Focus | Status |
+|---|---|---|
+| Milestone 1 | Repository Navigation | Completed ✅ |
+| Milestone 1.1 | Agent Guide Setup | Completed ✅ |
+| Milestone 2 | Architectural Decision Records | Completed ✅ |
+| Milestone 2.1 | Repository Cleanup & Lifecycle Refactoring | Completed ✅ |
+| Milestone 3 | Media Security POC documentation | Completed ✅ |
+| Milestone 4 | Technical Design | Pending |
+| Milestone 5 | Product documentation refresh | Pending |
