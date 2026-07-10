@@ -8,18 +8,20 @@ This repository is the shared memory for product decisions, architecture decisio
 
 ## Current Milestone
 
-Documentation Milestone 1: Repository navigation.
+Documentation Milestone 2: Architectural Decision Records.
 
 Scope:
-- Improve repository discoverability.
-- Add folder-level indexes.
-- Add a simple decision log.
-- Preserve existing product and architecture decisions.
+- Create the 7 Architectural Decision Records (ADRs) in `07-decisions/` capturing context, decisions, alternatives, and consequences.
+- Link the simple decision log (`00-project/DECISION_LOG.md`) to the detailed ADR files.
+- Update project indexes and navigation files.
+
+Completed Milestones:
+- Milestone 1 (Repository Navigation) ✅
+- Milestone 1.1 (Agent Guide Setup) ✅
+- Milestone 2 (Architectural Decision Records) ✅
 
 Out of scope for this milestone:
 - PRD refresh.
-- Architecture redesign.
-- ADR expansion.
 - Technical design authoring.
 - Media Security POC write-up.
 
@@ -57,12 +59,14 @@ For accepted decisions, see [00-project/DECISION_LOG.md](00-project/DECISION_LOG
 
 For guidance on how AI agents should work in this repository, see [00-project/AGENT_GUIDE.md](00-project/AGENT_GUIDE.md).
 
-## Future Documentation Milestones
+## Documentation Milestones
 
-| Milestone | Focus |
-|---|---|
-| Milestone 2 | Architectural Decision Records |
-| Milestone 3 | Media Security POC documentation |
-| Milestone 4 | Technical Design |
-| Milestone 5 | Product documentation refresh |
+| Milestone | Focus | Status |
+|---|---|---|
+| Milestone 1 | Repository Navigation | Completed ✅ |
+| Milestone 1.1 | Agent Guide Setup | Completed ✅ |
+| Milestone 2 | Architectural Decision Records | Completed ✅ |
+| Milestone 3 | Media Security POC documentation | Pending |
+| Milestone 4 | Technical Design | Pending |
+| Milestone 5 | Product documentation refresh | Pending |
 
