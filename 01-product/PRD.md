@@ -4,17 +4,15 @@
 
 **Shruti Sadhana**
 
-Status: Draft
+Status: Frozen (Phase 0 Pilot Release)
 
-Version: MVP v1
+Version: Pilot v0.1
 
 ---
 
-# 1. Product Vision
-
 Help every seeker chant correctly, confidently, and devotionally — bringing the temple learning experience into their homes.
 
-Shruti Sadhana is a Sanskrit Stotram learning platform focused on helping devotees learn sacred stotrams through guided learning, structured practice, and a devotional experience.
+Shruti Sadhana is a Sanskrit Stotram learning platform. For the Phase 0 Pilot Release, the product functions as a practice and revision companion for Kusum Guruji's Lalita Sahasranama batch.
 
 ---
 
@@ -54,122 +52,94 @@ Provide a learning experience superior to scattered online resources.
 
 # 4. Target Audience
 
-## Primary Persona
+## Phase 0 Pilot Cohort
+- **Cohort**: ~50 learners from Kusum Guruji's Lalita Sahasranama batch.
+- **Platforms**: Android native app (primary) and Flutter Web (for iPhone/iPad users).
+- **Behavior**: revision and practice companion used primarily after class.
+
+## Long-Term Personas
 
 ### Elder Devotee
-
 - Wants correct pronunciation
 - Prefers guided learning
 - Limited technical expertise
 
-## Secondary Persona
-
 ### Busy Professional
-
 - Limited daily time
 - Wants structured progression
 - Learns on mobile devices
 
-## Tertiary Persona
-
 ### Dedicated Sadhaka
-
 - Regular practitioner
 - Wants mastery and consistency
 - Interested in multiple stotrams
 
 ---
 
-# 5. MVP Scope
+# 5. MVP Scope (Phase 0 Pilot)
 
-The MVP focuses on three pillars:
+The Phase 0 Pilot focuses on the following capabilities:
 
 ## Learning Library
+- Access to Lalita Sahasranama only, structured by sections and shlokas.
 
-Browse and access structured stotram courses.
+## Guided Learning & Practice
+- Lyrics in Devanagari and English Transliteration.
+- Normal-speed audio streaming (reliable, handles poor connectivity gracefully).
+- Chanting recording, playback, and delete/re-record capability.
 
-## Guided Learning
+## Feedback & Onboarding
+- Onboarding flow: Splash → Script Preference → Vakratunda Mahakaya guided experience → Google Sign-In. No guest mode post-guided experience.
+- Feedback collection via simple in-app entry point and WhatsApp group.
 
-Learn individual verses through text, meaning, transliteration, and audio.
-
-## Puja Ghar
-
-Create a personalized devotional environment for learning and practice.
-
-Detailed feature scope is maintained in MVP-SCOPE.md.
+Detailed feature scope is maintained in [MVP-SCOPE.md](MVP-SCOPE.md).
 
 ---
 
 # 6. Monetization Strategy
 
-## Free Tier
-
-- Selected learning content
-- Normal-speed recitation
-- Basic learning experience
-
-## Premium Tier
-
-- Slow-speed recitation
-- Medium-speed recitation
-- Premium content and future premium features
+For the Phase 0 Pilot Release, all features are free of charge for the target cohort.
+All monetization, subscription models, payments, and donation mechanisms are deferred to future phases.
 
 ---
 
-# 7. Out of Scope for MVP
+# 7. Out of Scope for Phase 0 Pilot
 
-The following are intentionally excluded:
-
-- AI pronunciation feedback
-- Pronunciation scoring
-- Speech recognition
-- Community features
-- Live classes
-- Teacher marketplace
-- Gamification systems
+The following features are intentionally deferred:
+- Subscriptions and payments
+- Multi-speed playback (slow/medium speed)
+- Referrals and donations
+- Streaks, badges, and gamification
+- In-app notifications
+- AI pronunciation evaluation and scoring
+- Word-by-word/line-by-line learning modes
+- Puja Ghar (deity selection and devotional ambience)
+- Native iOS application (iPhone/iPad supported via Flutter Web)
+- Additional script support (only Devanagari and English Transliteration included)
+- Advanced analytics
 
 ---
 
 # 8. Success Metrics
 
-## Acquisition
-
-- Waitlist signups
-- App installs
-
-## Engagement
-
-- Daily active users
-- Weekly active users
-
-## Learning
-
-- Lessons completed
-- Course completion rate
-
-## Retention
-
-- Day 7 retention
-- Day 30 retention
-
-## Revenue
-
-- Premium conversion rate
-- Subscription revenue
+For detailed pilot metrics, see [SUCCESS-METRICS.md](SUCCESS-METRICS.md).
+Key areas tracked:
+- **Acquisition**: App installs and sign-ups.
+- **Engagement**: Cohort active usage, weekly sessions, practice duration, and chanting recordings.
+- **Learning**: Lesson completion rates and repeat practice sessions.
+- **Feedback & Retention**: WhatsApp active discussion and simple feedback submissions; Day 7/14/30 cohort retention.
 
 ---
 
-# 9. MVP Release Criteria
+# 9. Phase 0 Pilot Release Criteria
 
-The MVP is considered launch-ready when:
-
-- User onboarding works
-- Authentication is stable
-- Learning Library is functional
-- At least one flagship course is available
-- Audio playback is reliable
-- Progress tracking works
-- Subscription purchase flow works
+The application is considered ready for the pilot release when:
+- The onboarding flow (Splash → Script Preference → Vakratunda Mahakaya guided experience → Google Sign-In) is fully functional and stable.
+- Google Sign-In is active (no guest mode post-onboarding, mobile OTP deferred).
+- Lalita Sahasranama course content is complete (audio, lyrics, shlokas, sections).
+- Normal speed audio streaming is reliable and handles poor internet gracefully.
+- Chanting recording, playback, and delete/re-record works.
+- The simple in-app feedback entry point is functional and links to the WhatsApp group.
 
 ---
 

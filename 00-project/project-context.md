@@ -24,6 +24,16 @@ Help every seeker chant correctly, confidently, and devotionally — bringing th
 
 ---
 
+## Phase 0 Pilot Objectives
+
+For the initial pilot release (Phase 0), the scope is defined as follows:
+- **Primary Objective**: Validate Shruti Sadhana as a practical companion application for an existing Lalita Sahasranama batch conducted by Kusum Guruji. It helps devotees continue learning and practicing outside class through structured audio and lyrics.
+- **Market Demand**: The pilot is **not** intended to validate market demand.
+- **Product Positioning**: The long-term vision of a **guided Stotram learning platform** remains unchanged. The pilot simply starts with an existing batch where the product acts as a practice companion.
+- **Quality Standard**: The pilot is **not** a throwaway MVP. All implementations must be of production quality. Scope is reduced by excluding features, not by creating temporary implementations.
+
+---
+
 ## What Shruti Sadhana Is
 
 A platform focused on:
@@ -65,8 +75,14 @@ Small daily practice is more valuable than occasional intensive usage.
 
 ---
 
-## Primary Audiences
+## Target Audiences
 
+### Phase 0 Pilot Cohort
+- Approximately 50 learners from Kusum Guruji's Lalita Sahasranama batch.
+- **Platform**: Primarily Android native app users, with iPhone/iPad users supported via mobile Flutter Web.
+- **Usage**: Revision, practice, and chanting after class.
+
+### Long-Term Audiences
 - Existing Devotees
 - Spiritual Seekers
 - Elderly Users
@@ -94,26 +110,33 @@ Support complete devotional recitation experiences.
 
 ---
 
-## MVP Differentiators
+## Phase 0 Pilot Capabilities
 
-- Guided Stotra Learning
-- Participatory Chanting
-- Personalized Puja Ghar
-- Premium Multi-Speed Learning Audio
-- Community-led Growth through Referrals
-- Community Support through Donations
+- **Discover Content**: Browse Lalita Sahasranama.
+- **Read Lyrics**: Devanagari script and English Transliteration.
+- **Listen to Audio**: Reliable streaming (normal speed) with graceful handling of poor internet.
+- **Navigate Structure**: Navigate by sections and shlokas.
+- **Record & Playback**: Record chanting, play back, delete/re-record.
+- **Preferences & Progress**: Remember user preferences and learning progress.
+- **Authentication**: Onboarding via Splash → Script Selection → Vakratunda Mahakaya guided experience → Google Sign-In (no guest mode, mobile OTP deferred).
+- **Feedback**: Simple in-app feedback entry point and WhatsApp group.
 
 ---
 
 ## Long-Term Direction
 
-Future phases may include:
+Future phases will expand into the full MVP and long-term vision, including:
 
-- AI Pronunciation Feedback
-- Pronunciation Scoring
-- Personalized Recommendations
-- Community Experiences
-- Advanced Practice Analytics
+- **Premium Audio Modes**: Slow-speed and medium-speed learning audio.
+- **Monetization & Payments**: Subscriptions and donations.
+- **Community Features**: Referrals, messaging, and practice groups.
+- **AI Feedback**: AI pronunciation evaluation and scoring.
+- **Advanced Learning**: Word-by-word and line-by-line learning modes.
+- **Puja Ghar**: Deity selection, personalized deity spaces, and devotional ambient UI.
+- **Engagement**: Streaks, badges, and notification triggers.
+- **Platforms**: Native iOS application (replacing Flutter Web).
+- **Expanded Content**: Additional scripts (other Indic scripts) and courses (Vishnu Sahasranama, Hanuman Chalisa, etc.).
+- **Analytics**: Advanced learning analytics.
 
 ---
 

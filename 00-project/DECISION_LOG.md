@@ -10,7 +10,7 @@ This file records stable decisions that guide documentation and implementation w
 |---|---|---|---|---|
 | 2026-07-10 | Product | Shruti Sadhana is a Sanskrit Stotram Learning Platform, not a generic Sanskrit learning app. | Accepted | The focus is guided stotram learning, chanting, practice, parayana, and devotional experience. |
 | 2026-07-10 | Platform | Android is the first release platform. | Accepted | See [ADR-001](../08-decisions/ADR-001-android-first.md) (Native iOS is postponed). |
-| 2026-07-10 | Platform | Flutter Web is the preferred MVP experience for iPhone users. | Accepted | See [ADR-002](../08-decisions/ADR-002-flutter-web.md) (Supports web access for Apple users). |
+| 2026-07-10 | Platform | Flutter Web is the preferred MVP experience for iPhone users. | Accepted | See [ADR-002](../08-decisions/ADR-002-flutter-web.md) (Supports web access for Apple users in Kusum Guruji's batch). |
 | 2026-07-10 | Platform | Offline downloads are out of scope. | Accepted | See [ADR-004](../08-decisions/ADR-004-no-offline-downloads.md) (Streaming only to protect media). |
 | 2026-07-10 | Content | Content is curated rather than user-generated. | Accepted | See [ADR-006](../08-decisions/ADR-006-curated-content.md) (Ensures authentic pronunciation). |
 | 2026-07-10 | Media | Gold Standard recordings are premium intellectual property. | Accepted | See [ADR-003](../08-decisions/ADR-003-secure-media.md) (Requires secure playback controls). |
@@ -19,6 +19,18 @@ This file records stable decisions that guide documentation and implementation w
 | 2026-07-10 | Console | Separate Admin Console. | Accepted | See [ADR-005](../08-decisions/ADR-005-separate-admin-console.md) (Segregates administration from devotee client). |
 | 2026-07-10 | Platform | Environment Abstraction. | Accepted | See [ADR-007](../08-decisions/ADR-007-environment-abstraction.md) (Identical interfaces for local mock and production cloud). |
 | 2026-07-10 | Documentation | Repository navigation uses PROJECT_INDEX.md, folder-level INDEX.md, and AGENT_GUIDE.md. | Accepted | Avoids unnecessary documentation frameworks. |
+| 2026-07-13 | Product | Pilot focus on Kusum Guruji's batch | Accepted | Validate Shruti Sadhana as a companion app for ~50 students in Guruji's Lalita Sahasranama class. |
+| 2026-07-13 | Content | Lalita Sahasranama only content scope | Accepted | Content limited to Lalita Sahasranama (audio, lyrics, structured sections, shlokas). Other courses deferred. |
+| 2026-07-13 | Content | Devanagari and English Transliteration scripts only | Accepted | Other Indic scripts deferred post-pilot to reduce preparation and QA overhead. |
+| 2026-07-13 | Auth | Onboarding flow with Vakratunda Mahakaya guided experience | Accepted | Flow: Splash → Script Preference → Guided Vakratunda Mahakaya → Google Sign-In. No guest mode post-onboarding. Mobile OTP deferred. |
+| 2026-07-13 | Practice | Chanting Recording & Playback | Accepted | Users can record their chanting, play it back, and delete/re-record it for practice. |
+| 2026-07-13 | Product | Deferral of all premium payments and monetization features | Accepted | Subscriptions, donations, referrals, and multi-speed playback are deferred. |
+| 2026-07-13 | Feedback | Simple feedback collection | Accepted | Focus on WhatsApp group and simple in-app feedback entry point. No sophisticated system. |
+| 2026-07-13 | Product | Copy convention: Reserve "Sadhana" for product name | Accepted | Avoid "Sadhana" as a generic UI term. Use "Learning/Chanting/Practice" instead. |
+| 2026-07-13 | Product | Repeat usage: Simple continue learning mechanisms | Accepted | No streaks or gamification; uses Continue Learning, Recently Played, Resume Session. |
+| 2026-07-13 | Product | Deferral of Puja Ghar feature | Accepted | Deity selection and personalized spaces are deferred under the P0 decision-making rule (Guruji can conduct the batch and devotees can practice without it). |
+
+
 
 ## Future Decision Work
 

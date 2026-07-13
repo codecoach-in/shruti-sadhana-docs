@@ -2,74 +2,58 @@
 
 ## Purpose
 
-Defines how MVP success will be measured.
+Defines how success will be measured during the Phase 0 Pilot Release with Kusum Guruji's Lalita Sahasranama batch (~50 learners).
+
+The objective is to validate usability and practice efficacy, not market demand or monetization.
 
 ---
 
-# Acquisition
+# Cohort Acquisition
 
 Metrics:
-- Waitlist Signups
-- App Installs
-- Referral Driven Installs
+- **App Installs (Android)**: Number of native Android downloads.
+- **Web Visits (Flutter Web)**: Number of unique iOS/iPad users launching the web app.
+- **Google Sign-Ins**: Number of users completing onboarding and creating accounts.
 
 ---
 
-# Engagement
+# Cohort Engagement
 
 Metrics:
-- Daily Active Users
-- Weekly Active Users
-- Sessions Per Week
-- Average Practice Time
+- **Daily Active Users (DAU)**: Active learners per day (out of the ~50 cohort).
+- **Weekly Active Users (WAU)**: Active learners per week.
+- **Sessions Per Week**: Number of times users open the app weekly.
+- **Average Practice Duration**: Total minutes spent listening and practicing per user.
 
 ---
 
-# Learning Outcomes
+# Learning & Chanting Outcomes
 
 Metrics:
-- Lessons Completed
-- Course Completion Rate
-- Active Learners
-- Repeat Practice Sessions
+- **Lessons Completed**: Number of shlokas/sections marked as completed.
+- **Course Completion Rate**: Percentage of learners completing the Lalita Sahasranama.
+- **Chanting Recordings**: Total number of user-recorded chants.
+- **Repeat Practice Sessions**: Frequency of users revisiting already completed shlokas.
 
 ---
 
-# Devotional Engagement
+# Cohort Feedback & Retention
 
 Metrics:
-- Puja Ghar Usage
-- Participatory Chanting Sessions
-- Consecutive Practice Days
+- **Feedback Submissions**: Number of users submitting text feedback in-app.
+- **WhatsApp Participation**: Qualitative feedback and issue reports shared in the WhatsApp group.
+- **Day 7 Retention**: Percentage of active users returning 7 days after signup.
+- **Day 14 Retention**: Percentage of active users returning 14 days after signup.
+- **Day 30 Retention**: Percentage of active users returning 30 days after signup.
 
 ---
 
-# Monetization
+# Pilot Success Criteria
 
-Metrics:
-- Premium Conversion Rate
-- Subscription Revenue
-- Donation Conversion Rate
-- Donation Revenue
+The pilot is considered successful if:
 
----
-
-# Community Growth
-
-Metrics:
-- Referral Invitations Sent
-- Referral Conversion Rate
-- New Users Through Referrals
-
----
-
-# MVP Success Criteria
-
-The MVP is considered successful if:
-
-- Users complete learning journeys.
-- Participatory Chanting is actively used.
-- Users engage repeatedly with Puja Ghar.
-- Premium subscriptions demonstrate willingness to pay.
-- Donations demonstrate community support.
-- Referrals contribute measurable user growth.
+- **High Adoption**: At least 70% of Kusum Guruji's active class (~35+ students) signs up and completes the onboarding experience.
+- **Active Practice**: Devotees regularly use the audio streaming and recording/playback tools for after-class revision.
+- **Qualitative Validation**: Users provide constructive, actionable feedback via WhatsApp and the in-app portal.
+- **Stable Retention**: Devotees maintain engagement over the pilot duration (D7 and D14 retention above 50%).
+- **Infrastructure Stability**: No major streaming playback failures or backend crashes reported.

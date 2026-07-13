@@ -36,11 +36,11 @@ The repository is structured to represent the natural lifecycle of product devel
 Product: Sanskrit Stotram Learning, Practice & Parayana Platform
 
 Primary platforms:
-- Android first release platform.
-- Flutter Web for iPhone users during MVP.
+- Android native app (primary).
+- Flutter Web for iPhone/iPad users in Kusum Guruji's batch.
 - Native iOS postponed.
 
-Status: MVP Planning
+Status: Phase 0 Pilot Release (Frozen)
 
 Core Journey:
 Learn -> Practice -> Parayana
@@ -48,31 +48,32 @@ Learn -> Practice -> Parayana
 ## Accepted Product Decisions
 
 - Flutter Frontend
-- Flutter Web for iPhone users during MVP
+- Flutter Web for iPhone/iPad users during pilot/MVP
 - Native iOS application postponed
-- Android first release platform
+- Android first native release platform
 - NestJS Backend
 - MySQL Database
-- Firebase Authentication
+- Firebase / Google Sign-In Authentication (no guest mode, mobile OTP deferred)
 - Google Cloud Infrastructure
-- Personalized Puja Ghar
-- Slow/Medium Speed Audio as Premium Feature
-- AI Pronunciation Feedback Deferred to Phase 2
+- Personalized Puja Ghar deferred post-pilot
+- Chanting Recording & Playback (FRD-015)
+- Slow/Medium Speed Audio, Subscriptions, Donations, Referrals, and Puja Ghar deferred
+- AI Pronunciation Feedback Deferred to future phase
 - Offline downloads out of scope
 - Curated content instead of user-generated content
 - Gold Standard recordings treated as premium intellectual property
+- Product copy convention: Reserve "Sadhana" for brand name (Shruti Sadhana)
 
 ## Current MVP Modules
 
-- Authentication
-- Onboarding
+- Onboarding & Google Sign-In
 - Home Dashboard
-- Learning Library
-- Course Detail
-- Lesson Experience
-- Progress Tracking
-- Puja Ghar
-- Subscription System
+- Learning Library & Course Detail (Lalita Sahasranama only)
+- Lesson Experience (Devanagari, English Transliteration, Normal-speed audio streaming)
+- Chanting Recording & Playback (FRD-015)
+- Progress Tracking (no streaks/badges)
+- Simple In-app Feedback Form & WhatsApp Link
+
 
 ## Scope Authority
 
