@@ -63,6 +63,17 @@ Learn -> Practice -> Parayana
 - Curated content instead of user-generated content
 - Gold Standard recordings treated as premium intellectual property
 - Product copy convention: Reserve "Sadhana" for brand name (Shruti Sadhana)
+- State Management: Riverpod
+- Navigation: GoRouter (Named routes centrally configured)
+- Dependency Injection: Riverpod Providers only (no GetIt/Injectable)
+- Networking: Dio (REST endpoints, Repository pattern with DTO mapping in Data layer)
+- Local Storage: preferences, access tokens, and resume states only
+- Environment Config: Local, Staging, Production via `--dart-define` compiler flags
+- Flutter architecture: Feature-First folder structures combined with Lightweight Clean layers (Presentation/Domain/Data)
+- Coding Convention: `snake_case` files, `PascalCase` classes, and suffix rules (`Screen`, `Repository`, `Model`) defined in system overview
+- Audio Architecture: Decoupled Playback Engine, Synchronization Engine, Recording Engine, and coordinating Session Controller. UI consumes highlight events. Implementation timing drift/formats/caching are deferred.
+
+
 
 ## Current MVP Modules
 
@@ -107,5 +118,6 @@ Detailed Behaviour:
 7. Do not treat brainstorming notes as accepted requirements.
 8. Prefer existing patterns and documented decisions.
 9. Refer to [03-ux/README.md](03-ux/README.md) and [05-architecture/system-overview.md](05-architecture/system-overview.md) for canonical screen routing and identifiers (`SCR-xxx`).
+10. Adhere strictly to the project directories (`lib/app`, `core`, `shared`, `features`), Clean layers (`presentation/`, `domain/`, `data/`), and naming/suffix rules defined in [05-architecture/system-overview.md](05-architecture/system-overview.md).
 
 

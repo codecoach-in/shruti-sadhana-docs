@@ -4,6 +4,21 @@ All notable changes to the Shruti Sadhana documentation and codebase will be doc
 
 ## [Unreleased]
 
+### Updated (Audio & Sync Freeze - 2026-07-13)
+- **Audio Architecture Specs**: Documented the boundary separation between Playback Engine, Synchronization Engine, Recording Engine, and coordinating Session Controller in `05-architecture/system-overview.md`.
+- **Audio Sync Flow**: Added a synchronization decision table detailing UI/engine boundaries and mapped the high-level data stream flow in `system-overview.md`.
+- **AI Assist Guidelines**: Updated `AI_CONTEXT.md` to note the frozen audio architecture and deferred implementation details (buffering, timing schemas, drift corrections).
+- **Decisions Log**: Added the Audio & Synchronization Architecture decisions to `00-project/DECISION_LOG.md`.
+
+
+### Updated (Flutter Architecture Freeze - 2026-07-13)
+- **Frontend Architecture Specs**: Added master technical architecture rules (Riverpod state management, GoRouter navigation, Dio networking, environment compilation via `--dart-define`, local preferences constraints, and logger/crashlytics setups) to `05-architecture/system-overview.md`.
+- **Frozen Decisions Summary**: Integrated a canonical Frozen Decisions index table at the top of `system-overview.md`.
+- **UX Design Maturity**: Added design maturity and status declarations (frozen routing/IA/screen inventories, mockups reference, and visual design layout rules) to `03-ux/README.md`.
+- **AI Assist Guidelines**: Updated accepted decisions and assistant guidelines in `AI_CONTEXT.md` to ensure future coding agents adhere to folder structures, Clean layers, and suffix naming rules.
+- **Decisions Log**: Added entries for state management, routing, networking, storage scope, and environment configurations to `00-project/DECISION_LOG.md`.
+
+
 ### Updated (Phase 1 IA Freeze - 2026-07-13)
 - **Screen Inventory Mapping**: Added canonical screen inventory mapping table (SCR-001 through SCR-013) to `05-architecture/system-overview.md` mapping screen names, parent relationships, and primary purposes.
 - **Information Architecture Specs**: Overwrote placeholder document `03-ux/README.md` to act as the master IA reference, defining navigation trees, screen boundaries, direct/resume flows, and learning content hierarchies.

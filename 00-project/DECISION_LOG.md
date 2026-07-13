@@ -33,6 +33,15 @@ This file records stable decisions that guide documentation and implementation w
 | 2026-07-13 | IA | IA-002: Stable Screen Identifiers | Accepted | Screen inventory mapped to permanent non-hierarchical identifiers (`SCR-001` through `SCR-013`). |
 | 2026-07-13 | IA | IA-006: Local Script Selection Preference | Accepted | Script selection (Devanagari vs. English Transliteration) occurs before auth, stored locally and synchronized later. |
 | 2026-07-13 | IA | IA-009: Content Hierarchy Structure | Accepted | Strict Course → Section → Shloka organization. Learning Session teaches exactly one Shloka at a time. |
+| 2026-07-13 | Architecture | Flutter Application Architecture Frozen | Accepted | Lightweight clean, feature-first structure (`lib/app`, `core`, `shared`, `features`). Suffix rules for names. See [system-overview.md](../05-architecture/system-overview.md). |
+| 2026-07-13 | State / DI | Riverpod State Management & DI | Accepted | Riverpod is the sole framework for view states, logic notifications, and DI. No GetIt or Injectable. |
+| 2026-07-13 | Routing | GoRouter Navigation | Accepted | Centrally configured route map utilizing named routes with minimal guards. |
+| 2026-07-13 | Networking | Dio Client & Repository Mapping | Accepted | Dio REST client. DTO json serialization strictly in data layer; UI consumes pure Domain Entities. |
+| 2026-07-13 | Storage | Local Storage Scope | Accepted | Restricted strictly to user preferences, auth tokens, script choices, and resume state. No audio caching. |
+| 2026-07-13 | Config | Environment configuration via `--dart-define` | Accepted | Local, Staging, and Production compilation configurations set via compiler flags. |
+| 2026-07-13 | Audio | Audio & Synchronization Architecture | Accepted | Decoupled Playback Engine, Synchronization Engine, Recording Engine, and coordinating Session Controller. UI consumes highlight events. Timing drift/formats/caching are deferred. |
+
+
 
 
 

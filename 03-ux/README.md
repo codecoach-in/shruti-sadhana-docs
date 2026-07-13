@@ -142,3 +142,13 @@ The following elements are excluded from the Pilot Release navigation tree:
 - **Engagement Layouts**: Streaks calendar, badge drawers, or progress awards screens.
 - **Social & Growth**: Community message boards, messaging, donation flow screens, or referral share triggers.
 - **Utility Features**: Offline download screens/indicators, push notifications config, and deep linking handlers.
+
+---
+
+## 9. Design Maturity & Status
+
+- **Information Architecture**: Frozen for the Pilot Release.
+- **Screen Hierarchy**: Frozen (SCR-001 through SCR-013).
+- **Navigation Flow**: Frozen (as defined in Section 2.0).
+- **UI Mockups**: Reference UI mockups (v0.1) have been created to guide the pilot implementation.
+- **Visual Design**: **Not yet baselined** and may evolve during the frontend coding process. Treat current mockups as functional layout references rather than final style/color specifications.
