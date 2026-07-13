@@ -29,6 +29,11 @@ This file records stable decisions that guide documentation and implementation w
 | 2026-07-13 | Product | Copy convention: Reserve "Sadhana" for product name | Accepted | Avoid "Sadhana" as a generic UI term. Use "Learning/Chanting/Practice" instead. |
 | 2026-07-13 | Product | Repeat usage: Simple continue learning mechanisms | Accepted | No streaks or gamification; uses Continue Learning, Recently Played, Resume Session. |
 | 2026-07-13 | Product | Deferral of Puja Ghar feature | Accepted | Deity selection and personalized spaces are deferred under the P0 decision-making rule (Guruji can conduct the batch and devotees can practice without it). |
+| 2026-07-13 | IA | IA-001: Information Architecture Frozen | Accepted | High-level pilot screen layout and routing are frozen. No further changes without implementation blockers. |
+| 2026-07-13 | IA | IA-002: Stable Screen Identifiers | Accepted | Screen inventory mapped to permanent non-hierarchical identifiers (`SCR-001` through `SCR-013`). |
+| 2026-07-13 | IA | IA-006: Local Script Selection Preference | Accepted | Script selection (Devanagari vs. English Transliteration) occurs before auth, stored locally and synchronized later. |
+| 2026-07-13 | IA | IA-009: Content Hierarchy Structure | Accepted | Strict Course → Section → Shloka organization. Learning Session teaches exactly one Shloka at a time. |
+
 
 
 

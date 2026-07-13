@@ -4,7 +4,7 @@ Purpose: User experience, navigation, user journeys, screen specifications, inte
 
 ## Current Documents
 
-- [README.md](README.md) - current UX documentation placeholder.
+- [README.md](README.md) - Information Architecture, screen inventory, navigation hierarchy, and screen specifications.
 
 ## Future Documents
 

@@ -89,6 +89,13 @@ Feature Inventory:
 Detailed Behaviour:
 -> FRD Documents
 
+## Information Architecture
+
+- **IA Freeze**: The Phase 1 Information Architecture is frozen.
+- **Finalized Hierarchy**: All implementation discussions, Flutter routes, and designs must follow the screen inventory and navigation flows in [03-ux/README.md](03-ux/README.md).
+- **Naming Rule**: Always use `SCR-xxx` identifiers when referring to screens (e.g., SCR-005 Home, SCR-009 Learning Session).
+- **Stability**: Do not introduce new screens or modify navigation paths unless a confirmed engineering blocker is encountered.
+
 ## Guidelines For AI Assistants
 
 1. Read [PROJECT_INDEX.md](PROJECT_INDEX.md) before navigating the repository.
@@ -99,4 +106,6 @@ Detailed Behaviour:
 6. Treat [02-features/FEATURE_INDEX.md](02-features/FEATURE_INDEX.md) as the source of feature inventory.
 7. Do not treat brainstorming notes as accepted requirements.
 8. Prefer existing patterns and documented decisions.
+9. Refer to [03-ux/README.md](03-ux/README.md) and [05-architecture/system-overview.md](05-architecture/system-overview.md) for canonical screen routing and identifiers (`SCR-xxx`).
+
 

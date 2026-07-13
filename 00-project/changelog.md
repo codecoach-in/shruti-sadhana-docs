@@ -4,6 +4,13 @@ All notable changes to the Shruti Sadhana documentation and codebase will be doc
 
 ## [Unreleased]
 
+### Updated (Phase 1 IA Freeze - 2026-07-13)
+- **Screen Inventory Mapping**: Added canonical screen inventory mapping table (SCR-001 through SCR-013) to `05-architecture/system-overview.md` mapping screen names, parent relationships, and primary purposes.
+- **Information Architecture Specs**: Overwrote placeholder document `03-ux/README.md` to act as the master IA reference, defining navigation trees, screen boundaries, direct/resume flows, and learning content hierarchies.
+- **AI Assist Guidelines**: Updated `AI_CONTEXT.md` to include IA compliance rules and Guidelines for AI Assistants to use the `SCR-xxx` identifiers.
+- **Decisions Log**: Added entries for IA-001, IA-002, IA-006, and IA-009 to `00-project/DECISION_LOG.md`.
+
+
 ### Updated (Phase 0 Release Freeze - 2026-07-13)
 - **Product PRD & Scope**: Aligned `PRD.md` and `MVP-SCOPE.md` with the Phase 0 Pilot Release scope, focusing on Kusum Guruji's Lalita Sahasranama batch (~50 learners).
 - **Core Capabilities**: Included user chanting recording, playback, and delete/re-record capability (`FRD-015`) in scope.
