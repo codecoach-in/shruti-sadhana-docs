@@ -98,26 +98,30 @@ lib/features/<feature_name>/
 
 - **Framework**: **GoRouter** is the frozen navigation package.
 - **Configuration**: Managed centrally within `lib/app/router/` containing named routes.
-- **Guards**: Keep route guards minimal (e.g., redirecting unauthenticated users to SCR-004 Google Sign-In).
+- **Guards**: Keep route guards minimal (e.g., redirecting unauthenticated users to SS-002 Onboarding).
 - **Named Routes**: Always navigate using names rather than path strings to ease routing refactoring.
 
 ### Pilot Route Mapping
 
 | ID | Route Name | Path |
 | :--- | :--- | :--- |
-| **SCR-001** | `splash` | `/` |
-| **SCR-002** | `script_selection` | `/script-selection` |
-| **SCR-003** | `vakratunda` | `/vakratunda` |
-| **SCR-004** | `login` | `/login` |
-| **SCR-005** | `home` | `/home` |
-| **SCR-006** | `library` | `/library` |
-| **SCR-007** | `course_details` | `/course/:courseId` |
-| **SCR-013** | `trainer_profile` | `/course/:courseId/trainer` |
-| **SCR-008** | `lesson_index` | `/course/:courseId/lessons` |
-| **SCR-009** | `learning_session` | `/learning/:shlokaId` |
-| **SCR-010** | `lesson_complete` | `/learning/:shlokaId/complete` |
-| **SCR-011** | `progress` | `/progress` |
-| **SCR-012** | `settings` | `/settings` |
+| **SS-001** | `splash` | `/` |
+| **SS-002** | `shloka_script_selection`| `/choose-script` |
+| **SS-002A**| `invocation` | `/let-begin` |
+| **SS-002B**| `vakratunda_demo` | `/demo-learning` |
+| **SS-003** | `home_returning` | `/home` |
+| **SS-003A**| `home_first_time` | `/home-first-time` |
+| **SS-004** | `library` | `/library` |
+| **SS-005** | `course_details` | `/course/:courseId` |
+| **SS-005A**| `learning_plan_setup` | `/course/:courseId/plan-setup` |
+| **SS-006** | `meet_your_guide` | `/course/:courseId/guide` |
+| **SS-007** | `all_shlokas_index` | `/course/:courseId/shlokas` |
+| **SS-008** | `learning_session` | `/learning/:shlokaId` |
+| **SS-009** | `samarpan` | `/learning/:shlokaId/samarpan` |
+| **SS-010** | `support_shruti_sadhana`| `/support` |
+| **SS-011** | `my_shruti_sadhana` | `/progress` |
+| **SS-012** | `settings` | `/settings` |
+
 
 ---
 
@@ -227,7 +231,7 @@ The audio architecture is composed of four decoupled functional modules:
 - **Playback Engine**: Responsible for playing the lesson audio files from remote streams, managing playback state (play, pause, stop, seek), and emitting real-time playback updates.
 - **Synchronization Engine**: Listens to the current playback position and maps it to the active text segment (Section, Line, or Shloka/Word) using course-specific synchronization metadata.
 - **Recording Engine**: Interacts with the device microphone to record the user's chanting, saves the recording locally, and provides playback controls for self-evaluation.
-- **Session Controller**: The coordinator for the active `Learning Session` (SCR-009). It orchestrates state between the Playback, Sync, and Recording engines, and triggers progress updates.
+- **Session Controller**: The coordinator for the active `Learning Session` (SS-008). It orchestrates state between the Playback, Sync, and Recording engines, and triggers progress updates.
 
 ### 13.2 Audio Synchronization Model
 
@@ -246,7 +250,7 @@ The Synchronization Engine abstracts timing mapping away from UI components.
 ### 13.3 High-Level Data Flow
 
 ```text
-Learning Session (SCR-009)
+Learning Session (SS-008)
         ↓
 Audio Controller
         ↓
@@ -268,22 +272,65 @@ The following implementation-level items are deferred:
 
 ---
 
-## 14. Master Screen Inventory
+## 14. Master Screen & Component Inventory
 
-The following table maps the finalized Information Architecture screen inventory for the Pilot Release. These `SCR-xxx` identifiers serve as the canonical references for coding, routing, design, and testing.
+These stable identifiers serve as the canonical references for coding, routing, design, and testing.
 
-| ID | Screen | Parent Screen | Primary Purpose | Pilot |
+### 14.1 Primary Screen Inventory
+
+| ID | Screen | Status | Parent / Trigger | Primary Purpose / Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| **SCR-001** | Splash | — | Initialize application, load local preferences, check auth state | ✅ |
-| **SCR-002** | Script Selection | Splash | Select Sanskrit display script preference (Devanagari vs. English Transliteration) | ✅ |
-| **SCR-003** | Vakratunda Experience | Script Selection | Guided introductory chanting experience demonstrating platform functionality | ✅ |
-| **SCR-004** | Google Sign-In | Vakratunda Experience | Google authentication commitment point (guest mode disabled after experience) | ✅ |
-| **SCR-005** | Home | Google Sign-In | Main dashboard containing Sadhana Progress resume widget and main entry points | ✅ |
-| **SCR-006** | Library | Home | Browse and search available courses (Lalita Sahasranama pilot course) | ✅ |
-| **SCR-007** | Course Details | Library | View course significance, trainer summary, structure, and user progress | ✅ |
-| **SCR-008** | Lesson / Shloka Index | Course Details | List sections and individual shlokas within the course structure | ✅ |
-| **SCR-009** | Learning Session | Lesson/Shloka Index OR Home (Sadhana Progress Widget) | Active learning interface teaching exactly one Shloka at a time | ✅ |
-| **SCR-010** | Lesson Complete | Learning Session | Completion screen showing session success and progress tracking indicators | ✅ |
-| **SCR-011** | Progress | Home | View detailed learning stats and tracked historical progress | ✅ |
-| **SCR-012** | Profile & Settings | Home | Manage account details, preferences synchronization, and display script | ✅ |
-| **SCR-013** | Trainer Profile | Course Details | Detailed biography and background of the teacher (child screen of Course Details) | ✅ |
+| **SS-001** | Splash | ✅ Design Frozen | — | Established brand/emotion, simplified layout |
+| **SS-002** | Shloka Script Selection | ✅ Design Frozen | Splash | Allows the user to choose how Sanskrit shlokas will be displayed throughout the app. Supported scripts: Devanagari, English Transliteration. Extensible architecture. |
+| **SS-002A** | Invocation (Let's Begin) | ✅ Design Frozen | SS-002 | Transition / mental prep illustration card before first demo |
+| **SS-002B** | Vakratunda Demo Learning | ✅ Uses Session UI | SS-002A | Initial guided experience before mandatory login commitment |
+| **SS-003** | Home (Returning User) | ✅ Design Frozen | Auth / Home | Continue learning hero, Today's Learning, Native Ad, separated stats |
+| **SS-003A** | Home (First Time User) | ✅ Design Frozen | Auth / Setup | Initial clean dashboard screen, Start Journey button |
+| **SS-004** | Learning Library | ✅ Design Frozen | Home | Browse courses (Lalita Sahasranama pilot) |
+| **SS-005** | Course Details | ✅ Design Frozen | Library | Overview, sections checklist list |
+| **SS-005A** | Learning Plan Setup | ✅ Design Frozen | SS-003A | Wizard selecting learning pace (Slow & Steady vs. Balanced) |
+| **SS-006** | Meet Your Guide | ✅ Design Frozen | Course Details | Teacher details, bio, philosophy, trust indicators (no metrics) |
+| **SS-007** | All Shlokas Index | ✅ Design Frozen | Course Details | Browse and navigate all Shlokas for flexibility |
+| **SS-008** | Learning Session | ✅ Design Frozen | Index / Home | Core learning experience for a single shloka, including guided audio playback, chanting practice, and self-recording for review |
+| **SS-009** | Samarpan | ✅ Design Frozen | SS-008 | A devotional completion screen allowing the learner to mentally offer the fruits of their chanting before returning to the learning journey |
+| **SS-010** | Support Shruti Sadhana | ✅ Design Frozen | Samarpan / Home | Invites devotees to voluntarily support the continued development and preservation of Shruti Sadhana (periodic trigger) |
+| **SS-011** | My Shruti Sadhana | ✅ Design Frozen | Home | Progress metrics, spiritual illustrations of Havan Kund, Mala, Agarbatti, Manuscript |
+| **SS-012** | Settings | ✅ Design Frozen | Home | Manage reminders, learning plan, script, help & feedback |
+
+### 14.2 Secondary / Utility Screens
+
+| ID | Screen / Element | Trigger / Opened From | Notes |
+| :--- | :--- | :--- | :--- |
+| **SS-101** | Script Selection Bottom Sheet | Learning Session (SS-008) | Select Devanagari vs. English Transliteration |
+| **SS-102** | Font Size Bottom Sheet | Learning Session (SS-008) | Adjust stotra text display scale |
+| **SS-103** | Recording Options Bottom Sheet | Learning Session (SS-008) | Delete, rename, or save chanting recordings |
+| **SS-104** | Native Ad Card | Reusable layout card | Placed on Home Dashboard (SS-003) |
+| **SS-105** | Support Dialog | Future enhancement | Respectful donation trigger (non-blocking) |
+| **SS-106** | Error / Offline State | Reusable visual template | Shown on network failure or offline states |
+| **SS-107** | Empty State | Reusable visual template | Shown on empty Library, empty Progress log |
+
+### 14.3 Dialogs / Bottom Sheets
+
+| ID | Component Name | Description / Placement |
+| :--- | :--- | :--- |
+| **SS-BS-001** | Script Selection | Bottom sheet to pick active Sanskrit script preference |
+| **SS-BS-002** | Font Size | Bottom sheet to adjust typography text scale |
+| **SS-BS-003** | Recording Options | Bottom sheet containing options to manage user recordings |
+
+### 14.4 Reusable UI Components
+
+| ID | Component Name | Purpose / Placement |
+| :--- | :--- | :--- |
+| **SS-C-001** | Sacred Hero Header | Greeting bar displays devotional salutation |
+| **SS-C-002** | Continue Learning Card | Dashboard card loading the user's last shloka |
+| **SS-C-003** | Sacred Stat Card | Simple visual counters for completed chanting duration |
+| **SS-C-004** | Manuscript Card | Traditional border card holding stotra text |
+| **SS-C-005** | Audio Player | Basic normal-speed track streaming bar |
+| **SS-C-006** | Recording Card | Chanting mic controls and local file list item |
+| **SS-C-007** | Samarpan Button | Primary maroon action button initiating offering |
+| **SS-C-008** | Progress Tile | Individual course section checklist item |
+| **SS-C-009** | Native Ad Card | Reusable Google Native Ad container card |
+| **SS-C-010** | Support Card | Contribution call-to-action layout |
+| **SS-C-011** | Section Header | Thin-bordered headers containing conch details |
+| **SS-C-012** | Bottom Navigation | App navigation bar (Home, Library, Progress, Settings) |
+

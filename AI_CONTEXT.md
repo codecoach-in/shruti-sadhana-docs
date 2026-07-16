@@ -104,7 +104,7 @@ Detailed Behaviour:
 
 - **IA Freeze**: The Phase 1 Information Architecture is frozen.
 - **Finalized Hierarchy**: All implementation discussions, Flutter routes, and designs must follow the screen inventory and navigation flows in [03-ux/README.md](03-ux/README.md).
-- **Naming Rule**: Always use `SCR-xxx` identifiers when referring to screens (e.g., SCR-005 Home, SCR-009 Learning Session).
+- **Naming Rule**: Always use `SS-xxx` identifiers when referring to screens (e.g., SS-003 Home, SS-008 Learning Session).
 - **Stability**: Do not introduce new screens or modify navigation paths unless a confirmed engineering blocker is encountered.
 
 ## Guidelines For AI Assistants
@@ -117,7 +117,7 @@ Detailed Behaviour:
 6. Treat [02-features/FEATURE_INDEX.md](02-features/FEATURE_INDEX.md) as the source of feature inventory.
 7. Do not treat brainstorming notes as accepted requirements.
 8. Prefer existing patterns and documented decisions.
-9. Refer to [03-ux/README.md](03-ux/README.md) and [05-architecture/system-overview.md](05-architecture/system-overview.md) for canonical screen routing and identifiers (`SCR-xxx`).
+9. Refer to [03-ux/README.md](03-ux/README.md) and [05-architecture/system-overview.md](05-architecture/system-overview.md) for canonical screen routing and identifiers (`SS-xxx`, `SS-BS-xxx`, `SS-C-xxx`).
 10. Adhere strictly to the project directories (`lib/app`, `core`, `shared`, `features`), Clean layers (`presentation/`, `domain/`, `data/`), and naming/suffix rules defined in [05-architecture/system-overview.md](05-architecture/system-overview.md).
 
 

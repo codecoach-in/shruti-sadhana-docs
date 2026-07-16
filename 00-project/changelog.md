@@ -4,6 +4,17 @@ All notable changes to the Shruti Sadhana documentation and codebase will be doc
 
 ## [Unreleased]
 
+### Updated (Design System & UI Freeze - 2026-07-14)
+- **UI Design System**: Created `03-ux/design/DESIGN_SYSTEM.md` defining the Sacred Editorial Design language, Material 3 layouts, typography schemes, and editorial rules.
+- **Learning Session Specs**: Created `03-ux/screens/SS-008-learning-session/learning-session.md` freezing layouts and controls for screen `SS-008`.
+- **Home Screen Specs**: Created `03-ux/screens/SS-003-home/home.md` freezing layouts, priorities, and rules for dashboard screen `SS-003`.
+- **Illustration Library**: Created `03-ux/design/ILLUSTRATION_GUIDE.md` detailing asset properties, visual weights, and library subjects.
+- **Flutter UI Component Library**: Created `03-ux/design/UI_COMPONENT_LIBRARY.md` specifying properties, props, and states of reusable Flutter widgets.
+- **Devotional Offering Flow**: Created `01-product/SAMARPAN_FLOW.md` detailing the product flow and monetization limits.
+
+- **Screen IDs Transition**: Synchronized the shift from `SCR-xxx` to `SS-xxx` stable screen/component identifiers across `system-overview.md`, `README.md` under `03-ux`, `AI_CONTEXT.md`, and `DECISION_LOG.md`.
+
+
 ### Updated (Audio & Sync Freeze - 2026-07-13)
 - **Audio Architecture Specs**: Documented the boundary separation between Playback Engine, Synchronization Engine, Recording Engine, and coordinating Session Controller in `05-architecture/system-overview.md`.
 - **Audio Sync Flow**: Added a synchronization decision table detailing UI/engine boundaries and mapped the high-level data stream flow in `system-overview.md`.

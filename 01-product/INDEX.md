@@ -7,6 +7,7 @@ Purpose: Product requirements, MVP scope, launch criteria, monetization directio
 - [PRD.md](PRD.md) - product requirements document for MVP v1.
 - [MVP-SCOPE.md](MVP-SCOPE.md) - included and excluded MVP features.
 - [SUCCESS-METRICS.md](SUCCESS-METRICS.md) - acquisition, engagement, learning, retention, monetization, and community metrics.
+- [SAMARPAN_FLOW.md](SAMARPAN_FLOW.md) - devotional offering flow, screen layouts, and ads protection rules.
 
 ## Notes
 

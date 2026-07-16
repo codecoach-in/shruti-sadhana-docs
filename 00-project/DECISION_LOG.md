@@ -22,7 +22,7 @@ This file records stable decisions that guide documentation and implementation w
 | 2026-07-13 | Product | Pilot focus on Kusum Guruji's batch | Accepted | Validate Shruti Sadhana as a companion app for ~50 students in Guruji's Lalita Sahasranama class. |
 | 2026-07-13 | Content | Lalita Sahasranama only content scope | Accepted | Content limited to Lalita Sahasranama (audio, lyrics, structured sections, shlokas). Other courses deferred. |
 | 2026-07-13 | Content | Devanagari and English Transliteration scripts only | Accepted | Other Indic scripts deferred post-pilot to reduce preparation and QA overhead. |
-| 2026-07-13 | Auth | Onboarding flow with Vakratunda Mahakaya guided experience | Accepted | Flow: Splash → Script Preference → Guided Vakratunda Mahakaya → Google Sign-In. No guest mode post-onboarding. Mobile OTP deferred. |
+| 2026-07-13 | Auth | Onboarding flow with Vakratunda Mahakaya guided experience | Accepted | Flow: Splash → Choose Script → Let's Begin (Invocation) → Vakratunda Demo → Google Sign-In. No guest mode post-onboarding. Mobile OTP deferred. |
 | 2026-07-13 | Practice | Chanting Recording & Playback | Accepted | Users can record their chanting, play it back, and delete/re-record it for practice. |
 | 2026-07-13 | Product | Deferral of all premium payments and monetization features | Accepted | Subscriptions, donations, referrals, and multi-speed playback are deferred. |
 | 2026-07-13 | Feedback | Simple feedback collection | Accepted | Focus on WhatsApp group and simple in-app feedback entry point. No sophisticated system. |
@@ -30,7 +30,7 @@ This file records stable decisions that guide documentation and implementation w
 | 2026-07-13 | Product | Repeat usage: Simple continue learning mechanisms | Accepted | No streaks or gamification; uses Continue Learning, Recently Played, Resume Session. |
 | 2026-07-13 | Product | Deferral of Puja Ghar feature | Accepted | Deity selection and personalized spaces are deferred under the P0 decision-making rule (Guruji can conduct the batch and devotees can practice without it). |
 | 2026-07-13 | IA | IA-001: Information Architecture Frozen | Accepted | High-level pilot screen layout and routing are frozen. No further changes without implementation blockers. |
-| 2026-07-13 | IA | IA-002: Stable Screen Identifiers | Accepted | Screen inventory mapped to permanent non-hierarchical identifiers (`SCR-001` through `SCR-013`). |
+| 2026-07-13 | IA | IA-002: Stable Screen Identifiers | Accepted | Screen inventory mapped to permanent non-hierarchical identifiers (`SS-xxx`), bottom sheets (`SS-BS-xxx`), and reusable component IDs (`SS-C-xxx`). |
 | 2026-07-13 | IA | IA-006: Local Script Selection Preference | Accepted | Script selection (Devanagari vs. English Transliteration) occurs before auth, stored locally and synchronized later. |
 | 2026-07-13 | IA | IA-009: Content Hierarchy Structure | Accepted | Strict Course → Section → Shloka organization. Learning Session teaches exactly one Shloka at a time. |
 | 2026-07-13 | Architecture | Flutter Application Architecture Frozen | Accepted | Lightweight clean, feature-first structure (`lib/app`, `core`, `shared`, `features`). Suffix rules for names. See [system-overview.md](../05-architecture/system-overview.md). |
@@ -40,6 +40,7 @@ This file records stable decisions that guide documentation and implementation w
 | 2026-07-13 | Storage | Local Storage Scope | Accepted | Restricted strictly to user preferences, auth tokens, script choices, and resume state. No audio caching. |
 | 2026-07-13 | Config | Environment configuration via `--dart-define` | Accepted | Local, Staging, and Production compilation configurations set via compiler flags. |
 | 2026-07-13 | Audio | Audio & Synchronization Architecture | Accepted | Decoupled Playback Engine, Synchronization Engine, Recording Engine, and coordinating Session Controller. UI consumes highlight events. Timing drift/formats/caching are deferred. |
+| 2026-07-16 | Design | Design Freeze (Pilot v1.0) | Accepted | Pilot UI/UX is frozen, including onboarding flow (with new Let's Begin screen), Learning Plan Setup, simplified Splash/Home/Progress/Guide screens, and revised settings architecture. |
 
 
 

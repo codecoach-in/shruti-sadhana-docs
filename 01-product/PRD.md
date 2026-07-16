@@ -6,13 +6,13 @@
 
 Status: Frozen (Phase 0 Pilot Release)
 
-Version: Pilot v0.1
+Version: Pilot v1.0 (Design Freeze)
 
 ---
 
 Help every seeker chant correctly, confidently, and devotionally — bringing the temple learning experience into their homes.
 
-Shruti Sadhana is a Sanskrit Stotram learning platform. For the Phase 0 Pilot Release, the product functions as a practice and revision companion for Kusum Guruji's Lalita Sahasranama batch.
+Shruti Sadhana is a Stotram Learning Platform, not a Sanskrit language learning app. For the Phase 0 Pilot Release, the product functions as a practice and revision companion for Kusum Guruji's Lalita Sahasranama batch, providing the experience of being guided by a traditional teacher rather than navigating a conventional educational app.
 
 ---
 
@@ -89,7 +89,7 @@ The Phase 0 Pilot focuses on the following capabilities:
 - Chanting recording, playback, and delete/re-record capability.
 
 ## Feedback & Onboarding
-- Onboarding flow: Splash → Script Preference → Vakratunda Mahakaya guided experience → Google Sign-In. No guest mode post-guided experience.
+- Onboarding flow: Splash → Choose Your Shloka Script → Let's Begin (Invocation Screen) → Vakratunda Demo (Guided Demo Session) → Google Sign-In. No guest mode post-guided experience.
 - Feedback collection via simple in-app entry point and WhatsApp group.
 
 Detailed feature scope is maintained in [MVP-SCOPE.md](MVP-SCOPE.md).
@@ -134,7 +134,7 @@ Key areas tracked:
 # 9. Phase 0 Pilot Release Criteria
 
 The application is considered ready for the pilot release when:
-- The onboarding flow (Splash → Script Preference → Vakratunda Mahakaya guided experience → Google Sign-In) is fully functional and stable.
+- The onboarding flow (Splash → Choose Your Shloka Script → Let's Begin (Invocation Screen) → Vakratunda Demo (Guided Demo Session) → Google Sign-In) is fully functional and stable.
 - Google Sign-In is active (no guest mode post-onboarding, mobile OTP deferred).
 - Lalita Sahasranama course content is complete (audio, lyrics, shlokas, sections).
 - Normal speed audio streaming is reliable and handles poor internet gracefully.
@@ -145,4 +145,4 @@ The application is considered ready for the pilot release when:
 
 # Product Statement
 
-Shruti Sadhana exists to make authentic Sanskrit stotram learning accessible through guided learning, structured practice, and a devotional digital experience.
+Shruti Sadhana exists to make authentic Sanskrit stotram learning accessible through guided learning, structured practice, and a devotional digital experience (Learn • Practice • Sadhana).

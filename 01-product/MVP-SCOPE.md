@@ -11,18 +11,22 @@ The goal of the pilot is to validate Shruti Sadhana as a practical practice comp
 # Included Features
 
 ## Authentication & Onboarding
-- **Onboarding Flow**: Splash → Script Preference Selection → Vakratunda Mahakaya guided experience → Google Sign-In.
-- **Commitment Point**: Users must sign in via Google to use the application after experiencing the guided Vakratunda Mahakaya intro.
+- **Onboarding Flow**: Splash (SS-001) → Choose Your Shloka Script (SS-002) → Let's Begin (Invocation Screen - SS-002A) → Vakratunda Demo (Guided Demo Session - SS-002B) → Google Sign-In.
+- **Commitment Point**: Users must sign in via Google to use the application after experiencing the guided Vakratunda Demo.
 - **No Guest Mode**: No guest access exists past the introductory guided experience.
 - **Mobile OTP**: Deferred.
 
 ## Home Dashboard
-- **Continue Learning**: Quick access to resume the previous learning session.
-- **Recently Played**: History of recently accessed shlokas/sections.
+- **Continue Learning**: Quick access to resume the previous learning session via a prominent manuscript/book illustration.
+- **Today's Learning**: Displays Dhyanam (when applicable), Assigned Shlokas, and Kshama Prarthana (no per-item duration).
+- **Progress Split**: Shows Today's Progress and Overall Progress as separate indicators.
+- **Native Ad Placement**: Google Native Ad positioned directly between Today's Progress and Overall Progress.
+- **Support Banner**: Positioned near the bottom of the scroll view.
 
 ## Learning Library
 - **Browse Course**: Access to Lalita Sahasranama only.
-- **Course Detail Page**: Detailed summary, section/lesson index, and progress indicators.
+- **Course Detail Page**: Detailed summary, section index, Meet Your Guide details, and progress indicators.
+- **Learning Plan Setup (SS-005A)**: Selection wizard triggered only once when beginning a course. Allows choosing between "Slow & Steady" (3 Shlokas/day, ~20 mins) and "Balanced" (7 Shlokas/day) paces (no daily decision-making; pace can be changed later from Settings).
 
 ## Lesson Experience
 - **Sanskrit Text**: Display in Devanagari script.
@@ -38,7 +42,8 @@ The goal of the pilot is to validate Shruti Sadhana as a practical practice comp
 
 ## Progress Tracking & Preferences
 - **Preferences**: Remember the user's script selection (Devanagari vs. English Transliteration).
-- **Progress Tracking**: Automatically track completed sections and shlokas.
+- **My Shruti Sadhana Screen (SS-011)**: Includes the hero deity illustration, Journey So Far, Milestones, Learning Plan, a Native Ad, and a Support Banner. Uses hand-painted spiritual illustrations (Mala, Havan Kund, Agarbatti, Manuscript) instead of generic Material icons.
+- **Progress Calculation**: Progress is calculated based on completed Shlokas only. Shloka is the permanent learning unit, and Session is a dynamic temporary container.
 
 ## Feedback Collection
 - **In-App Feedback**: Simple entry point to submit text-based feedback.

@@ -1,154 +1,122 @@
 # Information Architecture & Navigation Specs
 
-Purpose: Canonical reference for user experience, navigation flows, and screen specifications.
+Purpose: Canonical reference for user experience, navigation hierarchies, screen routing paths, and design status.
 
 ---
 
-## 1. Pilot Screen Inventory
+## 1. Design & Component Specifications Index
 
-These screen identifiers represent the permanent reference markers for design, coding, and testing.
+For detailed layouts, tokens, guidelines, and widgets, refer to the dedicated specification documents:
+- **Visual Design System**: [DESIGN_SYSTEM.md](design/DESIGN_SYSTEM.md) (Philosophy, color palettes, typography, spacing, and motion guidelines).
+- **Home Screen Specification**: [home.md](screens/SS-003-home/home.md) (Greeting, Continue Learning hero card, and Today's Practice widgets).
+- **Learning Session Screen Specification**: [learning-session.md](screens/SS-008-learning-session/learning-session.md) (Manuscript container, audio player, recording limits, and Samarpan triggers).
+- **Illustration Guide**: [ILLUSTRATION_GUIDE.md](design/ILLUSTRATION_GUIDE.md) (Hand-painted miniatures style, colors, and core asset inventory).
+- **UI Component Library**: [UI_COMPONENT_LIBRARY.md](design/UI_COMPONENT_LIBRARY.md) (Reusable Flutter widget properties, states, and design parameters).
+- **Devotional Chanting Flow**: [SAMARPAN_FLOW.md](../01-product/SAMARPAN_FLOW.md) (The core Listen → Chant → Record → Samarpan loop, and support configurations).
 
-| ID | Screen Name | Description |
-| :--- | :--- | :--- |
-| **SCR-001** | Splash | App initialization, checking local state (stored script, auth token) |
-| **SCR-002** | Script Selection | Allow user to choose display script preference |
-| **SCR-003** | Vakratunda Experience | First guided chanting experience to demonstrate app value before sign-in |
-| **SCR-004** | Google Sign-In | Commit point for authentication |
-| **SCR-005** | Home | Main client dashboard containing progress widget and primary entry points |
-| **SCR-006** | Library | Course catalog browsing screen (Lalita Sahasranama for Pilot) |
-| **SCR-007** | Course Details | Introduces course significance, structure, trainer details, and completion progress |
-| **SCR-008** | Lesson / Shloka Index | Lists course content by sections and individual shlokas |
-| **SCR-009** | Learning Session | The active learning screen teaching one shloka at a time |
-| **SCR-010** | Lesson Complete | Confirms success and progress save for the completed shloka |
-| **SCR-011** | Progress | Displays detailed devotee learning statistics and history |
-| **SCR-012** | Profile & Settings | Manage user details, script preferences, and account sync |
-| **SCR-013** | Trainer Profile | Detailed biography and info on the course teacher (child screen of Course Details) |
 
 ---
 
-## 2. Navigation Hierarchy
+## 2. Navigation Hierarchy (Routing Tree)
 
-```
-Splash (SCR-001)
+The following ASCII tree maps the screen relationship and primary navigation paths:
+
+```text
+SS-001 Splash Screen (Simplified copy, establishments)
     ↓
-Script Selection (SCR-002)
+SS-002 Choose Your Shloka Script
     ↓
-Vakratunda Experience (SCR-003)
+SS-002A Let's Begin (Invocation Screen)
     ↓
-Google Sign-In (SCR-004)
+SS-002B Vakratunda Demo Learning (Uses Learning Session UI)
     ↓
-Home (SCR-005)
- ├── Library (SCR-006)
+[ Google Sign-In Authentication ]
+    ↓
+SS-003A Home Screen (First Time User layout)
+    ↓  [ Start Journey ]
+SS-005A Learning Plan Setup (Wizard pace selection)
+    ↓
+SS-003 Home Screen (Returning User layout)
+ ├── SS-004 Learning Library (Explore courses)
  │      ↓
- │  Course Details (SCR-007)
- │      ├── Trainer Profile (SCR-013) [Child Screen]
- │      └── Lesson/Shloka Index (SCR-008)
+ │  SS-005 Course Details (Overview & sections index)
+ │      ├── SS-006 Meet Your Guide (Teacher details/philosophy)
+ │      └── SS-007 All Shlokas Index (Navigation & flexibility focus)
  │                ↓
- │         Learning Session (SCR-009)
+ │         SS-008 Learning Session (Signature chanting screen)
  │                ↓
- │         Lesson Complete (SCR-010)
+ │         SS-009 Samarpan Screen (Lotus offering animation)
+ │                ↓
+ │         SS-010 Support Shruti Sadhana (Periodic request screen)
  │
- ├── Progress (SCR-011)
- │
- └── Profile & Settings (SCR-012)
+ ├── SS-011 My Shruti Sadhana (Devotee statistics & completed stotras list)
+ └── SS-012 Settings (App preferences & reminder configurations)
 ```
 
 ---
 
-## 3. Resume Learning Flows (SCR-009 Entry Points)
+## 3. Chanting Entry Flow Paths
 
-To minimize friction and encourage repeat practice, the **Learning Session** (SCR-009) has two intentional entry flows:
+To minimize friction and encourage regular practice, devotees can enter the active chanting screen via two routes:
 
-### Resume Flow (Direct Entry)
-Serves as the primary pathway for returning users.
-```
-Home (SCR-005)
-    ↓  [Sadhana Progress Widget click]
-Learning Session (SCR-009)
+### 3.1 Resume Flow (Direct Entry)
+Bypasses indices to launch practice immediately.
+```text
+SS-003 Home Screen
+    ↓  [Continue Learning Hero Card Tap]
+SS-008 Learning Session
 ```
 
-### Browse Flow (Catalog Entry)
-Serves as the exploratory pathway for searching and selecting lessons.
-```
-Home (SCR-005)
+### 3.2 Browse Flow (Catalog Entry)
+Used for exploring courses and navigation between stotras.
+```text
+SS-003 Home Screen
     ↓
-Library (SCR-006)
+SS-004 Learning Library
     ↓
-Course Details (SCR-007)
+SS-005 Course Details
     ↓
-Lesson/Shloka Index (SCR-008)
+SS-007 All Shlokas Index
     ↓
-Learning Session (SCR-009)
+SS-008 Learning Session
 ```
 
 ---
 
-## 4. Script Selection Behavior (SCR-002)
+## 4. Script Selection Behavior (SS-002)
 
-- **Timing**: Triggered before the introductory Vakratunda Mahakaya experience (SCR-003) to ensure Sanskrit text displays in the devotee's preferred script immediately.
-- **Supported Scripts**: Devanagari, English Transliteration.
-- **Persistence**: 
-  1. Stored **locally** on the device upon selection.
-  2. Synchronized and saved to the **user's backend profile** immediately after Google Sign-In (SCR-004) completes.
+- **Timing**: Choose Your Shloka Script selection (`SS-002`) occurs during onboarding before entering the guided Invocation (`SS-002A`) and Vakratunda Demo (`SS-002B`), ensuring the stotra verses are immediately rendered in the devotee's preferred layout script.
+- **Preferences**: Sanskrit script choice (Devanagari vs. English Transliteration).
+- **State Flow**:
+  1. Selected values are stored **locally** in device preferences immediately.
+  2. Synced with the devotee's backend profile on the server immediately after authentication completes.
+  3. Modifiable anytime post-onboarding from Settings (`SS-012`) or the Manuscript gear bottom sheets (`SS-BS-001`).
 
 ---
 
-## 5. Screen Boundaries
+## 5. Screen Boundaries & Responsibilities
 
-### Course Details (SCR-007)
-- **Responsibilities**: Host course introduction, spiritual significance metadata, trainer summary, course learning structure, overall user progress stats, and primary "Start / Continue Learning" button.
-- **Boundary**: Does *not* host active learning, audio player logic, or verse-by-verse chanting interfaces. These belong strictly inside the Learning Session (SCR-009).
-
-### Trainer Profile (SCR-013)
-- **Boundary**: Retained as a secondary child screen of Course Details. It is not part of the primary app navigation structure and has no direct links from Home or Profile.
+- **Course Details (`SS-005`)**: Responsible for presenting course introductory content, spiritual context, course section indices, and primary learning triggers. It does not house active audio playback or chanting recording panels.
+- **Meet Your Guide (`SS-006`)**: Sub-page of Course Details. Houses teacher bio, teaching philosophy, trust indicators, and a message from the guide. It excludes social follower counts and founder designations.
+- **Learning Session (`SS-008`)**: Immersive manuscript container managing audio synchronizations and chanting recordings. It does not display overall course statistics or course-wide catalog lists.
 
 ---
 
 ## 6. Content Hierarchy vs. Navigation Hierarchy
 
-We maintain a strict separation of concerns between content models and navigation paths. Do not conflate or merge them in code or specifications.
+We maintain a strict separation of concerns between database content structures and visual navigation layouts:
 
-### Navigation Hierarchy
-Specifies user flow and routing through the interface:
-```
-Home (SCR-005) → Library (SCR-006) → Course Details (SCR-007) → Lesson Index (SCR-008) → Learning Session (SCR-009)
-```
-
-### Content Hierarchy
-Specifies the structural organization of the spiritual materials in the database:
-```
-Course (e.g., Lalita Sahasranama)
-    ↓
-Section (e.g., Nyasa, Main Sahasranama Stotram)
-    ↓
-Shloka (Individual Verse unit)
-```
+- **Navigation Hierarchy (UI Routes)**:
+  `SS-003 Home → SS-004 Library → SS-005 Details → SS-007 All Shlokas Index → SS-008 Learning Session`
+- **Content Hierarchy (Data Relations)**:
+  `Course (e.g., Lalita Sahasranama) → Section (e.g., Nyasa) → Shloka (Single Verse unit)`
 
 ---
 
-## 7. Learning Unit (SCR-009 teaching scope)
+## 7. Design Maturity & Status
 
-- The **Learning Session** screen teaches exactly **one Shloka** at a time.
-- Longer logical sections (such as the Dhyana Shlokas or Nyasa) must be chunked and divided into separate, single-shloka learning sessions at the content model layer.
-
----
-
-## 8. Deferred Navigation & Interactions
-
-The following elements are excluded from the Pilot Release navigation tree:
-- **AI Pronunciation**: AI review triggers or pronunciation quality indicator screens.
-- **Premium Navigation**: Speed selector toggles (slow/medium speed) in the audio player.
-- **Advanced Learning Layouts**: Toggle views for word-by-word or line-by-line learning.
-- **Engagement Layouts**: Streaks calendar, badge drawers, or progress awards screens.
-- **Social & Growth**: Community message boards, messaging, donation flow screens, or referral share triggers.
-- **Utility Features**: Offline download screens/indicators, push notifications config, and deep linking handlers.
-
----
-
-## 9. Design Maturity & Status
-
-- **Information Architecture**: Frozen for the Pilot Release.
-- **Screen Hierarchy**: Frozen (SCR-001 through SCR-013).
-- **Navigation Flow**: Frozen (as defined in Section 2.0).
-- **UI Mockups**: Reference UI mockups (v0.1) have been created to guide the pilot implementation.
-- **Visual Design**: **Not yet baselined** and may evolve during the frontend coding process. Treat current mockups as functional layout references rather than final style/color specifications.
+- **Information Architecture**: ✅ Frozen for Pilot Release (v1.0).
+- **Screen Hierarchy**: ✅ Frozen (`SS-001` through `SS-012`).
+- **Navigation Flow**: ✅ Frozen (as defined in Section 2.0).
+- **UI Mockups**: Mapped layout mockups (v1.0) are located under `03-ux/mockups/` for reference.
+- **Visual Design**: ✅ Design Frozen. Warm ivory backgrounds, antique gold accents, and muted maroon primary buttons constitute the visual palette. Hand-painted spiritual illustrations are preferred over generic Material icons.

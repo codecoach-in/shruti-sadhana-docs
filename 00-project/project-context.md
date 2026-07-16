@@ -36,12 +36,12 @@ For the initial pilot release (Phase 0), the scope is defined as follows:
 
 ## What Shruti Sadhana Is
 
-A platform focused on:
-
+A Stotram Learning Platform (not a Sanskrit language learning app) focused on:
 - Learning sacred stotras
 - Guided practice
 - Participatory chanting
-- Devotional parayana
+- Devotional Sadhana
+- The feeling of being guided by a traditional teacher rather than navigating a conventional educational app
 - Personalized Puja Ghar experiences
 
 ---
@@ -57,6 +57,10 @@ A platform focused on:
 ---
 
 ## Product Philosophy
+
+### Core Journey
+The core spiritual and learning journey is:
+**Learn** → **Practice** → **Sadhana**
 
 ### Learning Through Listening
 Authentic recordings accelerate learning.
@@ -118,7 +122,7 @@ Support complete devotional recitation experiences.
 - **Navigate Structure**: Navigate by sections and shlokas.
 - **Record & Playback**: Record chanting, play back, delete/re-record.
 - **Preferences & Progress**: Remember user preferences and learning progress.
-- **Authentication**: Onboarding via Splash → Script Selection → Vakratunda Mahakaya guided experience → Google Sign-In (no guest mode, mobile OTP deferred).
+- **Authentication**: Onboarding via Splash → Choose Your Shloka Script → Let's Begin (Invocation Screen) → Vakratunda Demo (Guided Demo Session) → Google Sign-In (no guest mode post-guided experience, mobile OTP deferred).
 - **Feedback**: Simple in-app feedback entry point and WhatsApp group.
 
 ---
