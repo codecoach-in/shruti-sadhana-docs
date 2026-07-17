@@ -5,6 +5,7 @@ Purpose: System-wide architecture and engineering decisions. Answers "How is the
 ## Current Documents
 
 - [system-overview.md](system-overview.md) - System overview, component descriptions, and architecture layout.
+- [audio-synchronization.md](audio-synchronization.md) - Placeholder reserving the audio synchronization architectural contract.
 
 ## Future Documents
 

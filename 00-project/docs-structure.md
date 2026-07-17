@@ -1,176 +1,134 @@
-# Shruti Sadhana Documentation Repository
+# Shruti Sadhana Documentation Repository Structure
+
+This document lists the intended documentation hierarchy. To assist both human developers and AI coding agents, each document is labeled with one of the following statuses:
+* ✅ **Existing**: The document is complete and exists in the repository.
+* 🟡 **Planned**: The document is scoped and will be created or fully detailed during the upcoming Architecture and Technical Design phases.
+* 🔴 **Future**: The document is deferred to post-pilot/future phases and is currently out of scope.
+
+---
 
 ```text
 shruti-sadhana-docs/
-
-README.md
-PROJECT_INDEX.md
-AI_CONTEXT.md
-
-00-project/
 │
-├── README.md
-├── AGENT_GUIDE.md
-├── project-context.md
-├── vision-and-principles.md
-├── personas.md
-├── glossary.md
-├── DECISION_LOG.md
-└── changelog.md
-
-01-product/
+├── README.md ✅
+├── PROJECT_INDEX.md ✅
+├── AI_CONTEXT.md ✅
 │
-├── README.md
-├── PRD.md
-├── MVP-scope.md
-├── success-metrics.md
-└── success-metrics.md
-
-02-features/
+├── 00-project/
+│   ├── INDEX.md ✅
+│   ├── AGENT_GUIDE.md ✅
+│   ├── project-context.md ✅
+│   ├── glossary.md ✅
+│   ├── DECISION_LOG.md ✅
+│   ├── changelog.md ✅
+│   ├── docs-structure.md ✅
+│   ├── vision-and-principles.md 🔴 (Future)
+│   └── personas.md 🔴 (Future)
 │
-├── README.md
-├── FEATURE_INDEX.md
-└── INDEX.md
-
-03-ux/
+├── 01-product/
+│   ├── INDEX.md ✅
+│   ├── PRD.md ✅
+│   ├── MVP-SCOPE.md ✅
+│   ├── SUCCESS-METRICS.md ✅
+│   └── SAMARPAN_FLOW.md ✅
 │
-├── README.md
-├── INDEX.md
-├── user-journeys.md
-├── navigation.md
-├── onboarding.md
-├── home-screen.md
-├── courses.md
-├── shloka-learning.md
-├── progress.md
-├── poojaghar.md
-├── settings.md
-└── design-history.md
-
-04-frd/
+├── 02-features/
+│   ├── INDEX.md ✅
+│   └── FEATURE_INDEX.md ✅
 │
-├── README.md
-├── INDEX.md
-├── FRD-00-architecture.md
-├── FRD-01-authentication.md
-├── FRD-02-content-model.md
-├── FRD-03-learning-experience.md
-├── FRD-04-audio-engine.md
-├── FRD-05-poojaghar.md
-├── FRD-06-progress-and-notifications.md
-├── FRD-07-referrals.md
-└── FRD-08-donations.md
-
-05-architecture/
+├── 03-ux/
+│   ├── INDEX.md ✅
+│   ├── README.md ✅
+│   ├── design/
+│   │   ├── DESIGN_SYSTEM.md ✅
+│   │   ├── ILLUSTRATION_GUIDE.md ✅
+│   │   └── UI_COMPONENT_LIBRARY.md ✅
+│   └── screens/
+│       ├── SS-003-home/
+│       │   └── home.md ✅
+│       ├── SS-008-learning-session/
+│       │   └── learning-session.md ✅
+│       ├── SS-001-splash/ 🟡 (Planned)
+│       ├── SS-002-script-selection/ 🟡 (Planned)
+│       ├── SS-002A-invocation/ 🟡 (Planned)
+│       ├── SS-002B-vakratunda-demo/ 🟡 (Planned)
+│       ├── SS-004-learning-library/ 🟡 (Planned)
+│       ├── SS-005-course-details/ 🟡 (Planned)
+│       ├── SS-005A-plan-setup/ 🟡 (Planned)
+│       ├── SS-006-meet-guide/ 🟡 (Planned)
+│       ├── SS-007-shlokas-index/ 🟡 (Planned)
+│       ├── SS-009-samarpan/ 🟡 (Planned)
+│       ├── SS-010-support/ 🟡 (Planned)
+│       ├── SS-011-progress/ 🟡 (Planned)
+│       └── SS-012-settings/ 🟡 (Planned)
 │
-├── README.md
-├── INDEX.md
-├── system-overview.md
-├── frontend-flutter.md
-├── backend-nestjs.md
-├── database-design.md
-├── api-guidelines.md
-├── security.md
-├── storage-and-media.md
-└── integrations.md
-
-06-technical-design/
+├── 04-frd/
+│   ├── INDEX.md ✅
+│   ├── FRD-00-architecture.md ✅
+│   ├── FRD-01-authentication.md 🟡 (Planned)
+│   ├── FRD-02-content-model.md 🟡 (Planned)
+│   ├── FRD-03-learning-experience.md 🟡 (Planned)
+│   ├── FRD-04-audio-engine.md 🟡 (Planned)
+│   ├── FRD-08-chanting-recording.md 🟡 (Planned)
+│   ├── FRD-05-poojaghar.md 🔴 (Future)
+│   ├── FRD-06-progress-and-notifications.md 🔴 (Future)
+│   └── FRD-07-referrals-and-donations.md 🔴 (Future)
 │
-├── README.md
-├── INDEX.md
-├── TDS-authentication.md
-├── TDS-content-model.md
-├── TDS-learning.md
-├── TDS-audio-engine.md
-├── TDS-poojaghar.md
-├── TDS-progress.md
-├── TDS-referrals.md
-└── TDS-donations.md
-
-07-content/
+├── 05-architecture/
+│   ├── INDEX.md ✅
+│   ├── system-overview.md ✅
+│   ├── audio-synchronization.md ✅  <-- Placeholder added to reserve contract
+│   ├── frontend-flutter.md 🟡 (Planned)
+│   ├── backend-nestjs.md 🟡 (Planned)
+│   ├── database-design.md 🟡 (Planned)
+│   ├── api-guidelines.md 🟡 (Planned)
+│   ├── security.md 🟡 (Planned)
+│   └── integrations.md 🟡 (Planned)
 │
-├── README.md
-├── INDEX.md
-├── content-model.md
-├── course-structure.md
-├── guru-model.md
-├── blessings.md
-└── notifications.md
-
-08-decisions/
+├── 06-technical-design/
+│   ├── INDEX.md ✅
+│   ├── README.md ✅
+│   ├── TDS-authentication.md 🟡 (Planned)
+│   ├── TDS-learning.md 🟡 (Planned)
+│   ├── TDS-audio-engine.md 🟡 (Planned)
+│   ├── TDS-chanting-recording.md 🟡 (Planned)
+│   └── TDS-poojaghar.md 🔴 (Future)
 │
-├── README.md
-├── INDEX.md
-├── ADR-template.md
-├── ADR-001-android-first.md
-├── ADR-002-flutter-web.md
-├── ADR-003-secure-media.md
-├── ADR-004-no-offline-downloads.md
-├── ADR-005-separate-admin-console.md
-├── ADR-006-curated-content.md
-└── ADR-007-environment-abstraction.md
-
-09-research/
+├── 07-content/
+│   ├── INDEX.md ✅
+│   ├── README.md ✅
+│   ├── content-model.md 🟡 (Planned)
+│   ├── course-structure.md 🟡 (Planned)
+│   └── guru-model.md 🟡 (Planned)
 │
-├── README.md
-├── INDEX.md
-├── participatory-chanting-poc.md
-├── competitor-analysis.md
-└── future-ideas.md
-
-10-assets/
+├── 08-decisions/
+│   ├── INDEX.md ✅
+│   ├── README.md ✅
+│   ├── ADR-001-android-first.md ✅
+│   ├── ADR-002-flutter-web.md ✅
+│   ├── ADR-003-secure-media.md ✅
+│   ├── ADR-004-no-offline-downloads.md ✅
+│   ├── ADR-005-separate-admin-console.md ✅
+│   ├── ADR-006-curated-content.md ✅
+│   └── ADR-007-environment-abstraction.md ✅
 │
-├── README.md
-├── INDEX.md
-├── mockups/
-├── diagrams/
-└── references/
+├── 09-research/
+│   ├── INDEX.md ✅
+│   ├── README.md ✅
+│   ├── media-security-poc/
+│   │   ├── INDEX.md ✅
+│   │   ├── Executive-Summary.md ✅
+│   │   ├── Technical-Findings.md ✅
+│   │   ├── Lessons-Learned.md ✅
+│   │   └── Future-Recommendations.md ✅
+│   ├── participatory-chanting-poc.md ✅
+│   ├── competitor-analysis.md 🟡 (Planned)
+│   └── future-ideas.md 🔴 (Future)
+│
+└── 10-assets/
+    ├── INDEX.md ✅
+    ├── README.md ✅
+    ├── mockups/ 🟡 (Planned)
+    ├── diagrams/ 🟡 (Planned)
+    └── references/ 🟡 (Planned)
 ```
-
-## Purpose of Each Section
-
-00-project
-
-* Project identity, long-term context, and AI assistant guidelines.
-* DECISION_LOG.md and AGENT_GUIDE.md.
-
-01-product
-
-* Product requirements, PRD, MVP boundaries, monetization, and success metrics.
-
-02-features
-
-* Feature inventory lists and status tracking.
-
-03-ux
-
-* User experience, journeys, mockups, layout/navigation flow thinking, and design history.
-
-04-frd
-
-* Functional Requirements Documents defining specific behaviors of each system feature.
-
-05-architecture
-
-* System-wide architectural designs (diagrams, backend/frontend layout, deployment, integrations).
-
-06-technical-design
-
-* Technical design specifications (APIs, entity logic, module details) for development execution.
-
-07-content
-
-* Sanskrit content modeling, course structuring, notifications, blessings, and guru details.
-
-08-decisions
-
-* Architectural Decision Records (ADRs) explaining "why" choices were made.
-
-09-research
-
-* Proof of Concept findings, experiments, competitor research, and user insights.
-
-10-assets
-
-* Graphic designs, mockups, system architecture diagrams, and static media files.
-

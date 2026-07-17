@@ -83,3 +83,16 @@ The following options are deferred and must **not** be implemented:
 - Line-by-line highlight selection tabs
 - Premium player layout drawers
 - AI Pronunciation scoring displays
+
+---
+
+## 5. User Recording Lifecycle (Functional Specification)
+
+This section defines the behavior of devotee chanting recordings at a functional level:
+
+* **Maximum Recordings**: Devotees can save a maximum of **3 recordings** per Shloka. If a user attempts to record a 4th track, the application must prompt them to delete one of the existing recordings via the Recording Options Bottom Sheet (`SS-BS-003`) before starting a new recording.
+* **Local vs. Cloud Storage**: Chanting recordings are stored **strictly locally** on the device's storage. No user audio recordings are uploaded to the backend server or cloud database.
+* **Deletion Behavior**: Deleting a recording permanently removes the audio file from local storage.
+* **Device Migration Expectations**: Since recordings are stored locally, recordings will **not migrate** if a user switches devices or clears application data.
+* **MVP Limitations**: Chanting recordings are intended for real-time self-evaluation only. No permanent audio archiving, sharing, or backend backup capabilities are supported in this phase.
+

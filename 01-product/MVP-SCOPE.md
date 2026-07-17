@@ -15,6 +15,12 @@ The goal of the pilot is to validate Shruti Sadhana as a practical practice comp
 - **Commitment Point**: Users must sign in via Google to use the application after experiencing the guided Vakratunda Demo.
 - **No Guest Mode**: No guest access exists past the introductory guided experience.
 - **Mobile OTP**: Deferred.
+- **Google Sign-In Edge Cases**:
+  - **User Cancels Sign-In**: If the user dismisses the Google Sign-In modal, they must remain on the commitment screen with a friendly message reminding them that login is required to save their learning plans and track progress.
+  - **No Internet Connectivity**: If the user is offline when trying to sign in, the app must display a clear message indicating a network connection is required for authentication and invite them to retry once they are back online.
+  - **Authentication Failure**: If the backend handshake or credentials validation fails, the app must display an error message (e.g., "Sign-in failed. Please try again.") and return the user to the Sign-In commitment screen.
+  - **Expired Token**: If the user's login session expires during app usage, they should be signed out, redirected to the Sign-In screen, and prompted to log in again.
+  - **Retry Behavior**: The sign-in action must be repeatable. Failing or canceling sign-in must not lock the screen or freeze the app; users must be able to initiate the Google Sign-In action again.
 
 ## Home Dashboard
 - **Continue Learning**: Quick access to resume the previous learning session via a prominent manuscript/book illustration.

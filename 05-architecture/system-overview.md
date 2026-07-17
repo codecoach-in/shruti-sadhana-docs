@@ -301,9 +301,9 @@ These stable identifiers serve as the canonical references for coding, routing, 
 
 | ID | Screen / Element | Trigger / Opened From | Notes |
 | :--- | :--- | :--- | :--- |
-| **SS-101** | Script Selection Bottom Sheet | Learning Session (SS-008) | Select Devanagari vs. English Transliteration |
-| **SS-102** | Font Size Bottom Sheet | Learning Session (SS-008) | Adjust stotra text display scale |
-| **SS-103** | Recording Options Bottom Sheet | Learning Session (SS-008) | Delete, rename, or save chanting recordings |
+| **SS-BS-001** | Script Selection Bottom Sheet | Learning Session (SS-008) | Select Devanagari vs. English Transliteration |
+| **SS-BS-002** | Font Size Bottom Sheet | Learning Session (SS-008) | Adjust stotra text display scale |
+| **SS-BS-003** | Recording Options Bottom Sheet | Learning Session (SS-008) | Delete, rename, or save chanting recordings |
 | **SS-104** | Native Ad Card | Reusable layout card | Placed on Home Dashboard (SS-003) |
 | **SS-105** | Support Dialog | Future enhancement | Respectful donation trigger (non-blocking) |
 | **SS-106** | Error / Offline State | Reusable visual template | Shown on network failure or offline states |

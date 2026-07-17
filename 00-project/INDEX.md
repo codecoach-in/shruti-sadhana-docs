@@ -8,6 +8,7 @@ Purpose: Stable project context, repository guidance, accepted decisions, and ch
 - [AGENT_GUIDE.md](AGENT_GUIDE.md) - stable guidance for AI coding agents.
 - [DECISION_LOG.md](DECISION_LOG.md) - simple accepted-decision log.
 - [docs-structure.md](docs-structure.md) - intended documentation repository structure.
+- [glossary.md](glossary.md) - canonical domain terminology and definitions.
 - [changelog.md](changelog.md) - documentation change history.
 
 ## Notes
