@@ -1,336 +1,191 @@
-# System Architecture & Flutter Specifications
+# System Architecture
 
-**Status:** ✅ Frozen for Pilot Release
+**Status:** Proposed for Architecture Freeze v1
+**Scope:** Phase 0 Pilot
 
-This document defines the system-wide architecture and coding specifications for the Shruti Sadhana frontend. These decisions are frozen to ensure a stable implementation foundation and optimize delivery within the pilot timeline.
+## 1. Purpose
 
----
+This document defines the system-level architecture for Shruti Sadhana. It describes the major runtime components, their boundaries, and the key system-wide data flows. It preserves the frozen product, UX, and ADR decisions; it does not define code structure, database schemas, endpoint contracts, or player internals.
 
-## Frozen Decisions Summary
+The detailed architecture sequence is:
 
-| Architectural Area | Decision | Reference Spec |
-| :--- | :--- | :--- |
-| **Frontend Framework** | Flutter (Mobile & Web) | ADR-001 / ADR-002 |
-| **Project Structure** | Feature-First Project Layout | Section 2.1 |
-| **Folder Pattern** | Clean Architecture (Presentation, Domain, Data) | Section 2.2 |
-| **State Management** | Riverpod | Section 3.0 |
-| **Navigation** | GoRouter (Named Routing) | Section 4.0 |
-| **Dependency Injection** | Riverpod Providers (No GetIt/Injectable) | Section 5.0 |
-| **Networking Client** | Dio (REST APIs, Repository Pattern) | Section 6.0 |
-| **Local Storage** | Preferences, tokens, and resume states only | Section 7.0 |
-| **Configuration** | Environment config via `--dart-define` | Section 8.0 |
-| **Error Handling** | Centralized application wrapper & Logger / Crashlytics | Section 9.0 |
-| **Audio & Sync** | Decoupled Playback/Sync/Recording engines with Stream outputs | Section 13.0 |
+1. This system overview
+2. Flutter architecture
+3. NestJS architecture
+4. Database design
+5. API contracts
+6. Media architecture
+7. Security architecture
+8. Implementation roadmap
 
+## 2. Scope and Constraints
 
----
+The pilot supports the existing Lalita Sahasranama cohort with a Flutter Android application as the primary client and a responsive Flutter Web client for iPhone and iPad users. The system provides Google sign-in, curated course content, secure online audio playback, local chanting recordings, preferences, and learning progress.
 
-## 1. System Components
+The following decisions constrain this architecture:
 
-1. **Frontend Flutter Client (Mobile & Web)**: Serves as the primary native client on Android and a responsive web client on Flutter Web for iOS/iPad users.
-2. **Audio Sync Engine**: Client-side playback engine driving real-time audio synchronization with highlighted visual shloka text.
-3. **Application Backend (NestJS)**: Serves course configurations, transcripts, and validates playback requests (Signed URLs).
-4. **Content Database (MySQL)**: Holds structural stotram courses, shlokas, and user learning states.
+- Android is the primary native release; iOS/iPad access is through the responsive web client ([ADR-001](../08-decisions/ADR-001-android-first.md), [ADR-002](../08-decisions/ADR-002-flutter-web.md)).
+- Authentication uses Firebase Authentication with Google Sign-In.
+- Course content is curated and managed through a closed content pipeline; there are no public content-upload paths ([ADR-006](../08-decisions/ADR-006-curated-content.md)).
+- Protected media is delivered directly from CDN-backed private storage. The application backend authorizes playback but does not proxy audio bytes ([ADR-003](../08-decisions/ADR-003-secure-media.md)).
+- Downloading media for offline use is out of scope ([ADR-004](../08-decisions/ADR-004-no-offline-downloads.md)).
+- Infrastructure integrations must support a local driver and a production driver ([ADR-007](../08-decisions/ADR-007-environment-abstraction.md)).
 
----
-
-## 2. Codebase Organization
-
-We follow a **Feature-First** structure combined with a **lightweight Clean Architecture** layer within features. Naming conventions, routing, and shared UI boundaries must adhere strictly to these conventions.
-
-### 2.1 Top-Level Directory Layout
-
-All source code resides inside the `lib/` directory:
+## 3. System Context
 
 ```text
-lib/
-├── app/
-├── core/
-├── shared/
-├── features/
-└── main.dart
+                         +-----------------------+
+                         | Firebase Authentication |
+                         | Google Sign-In          |
+                         +-----------+-----------+
+                                     |
+                                     v
++-------------------+       +--------+---------+       +------------------+
+| Flutter clients   | HTTPS | NestJS application| SQL   | MySQL            |
+| Android           +------>+ API and authz      +------>+ application data |
+| Responsive Web    |<------+                     |<------+                  |
++---------+---------+       +--------+---------+       +------------------+
+          |                            |
+          | HTTPS playback manifest    | reads/writes
+          v                            v
++---------+----------------------------+-------------------------------+
+| Google Cloud media platform                                           |
+| Private GCS source content -> Cloud CDN -> encrypted HLS segments    |
++-----------------------------------------------------------------------+
 ```
 
-| Directory | Responsibility | Components Included |
-| :--- | :--- | :--- |
-| **app/** | Application bootstrapping | Main MaterialApp, global themes, GoRouter setup, global app configurations. |
-| **core/** | Low-level system utilities & infrastructure | API clients, network intercepts, local database wrappers, global utility services, error interceptors. |
-| **shared/** | Reusable UI assets and presentation code | Common widgets (custom buttons, load indicators), dialogue boxes, extension helpers, color schemes. |
-| **features/** | Isolated business domains | Subfolders representing distinct functional areas (e.g., library, learning, progress). |
+The client communicates only with the NestJS application for application data and playback authorization. Once the backend returns an authorized, rewritten HLS manifest, the media player retrieves its encrypted segments directly from Cloud CDN. This keeps high-bandwidth traffic outside the application service.
 
-### 2.2 Feature Module Conventions
+## 4. Major Components
 
-Inside `lib/features/`, every feature module (such as `home`, `library`, `learning`, `progress`, `settings`, `onboarding`, `auth`) is structured into presentation, domain, and data layers:
+| Component | Responsibility | Does not own |
+| --- | --- | --- |
+| Flutter clients | Render the frozen user experience, obtain Firebase credentials, request application data, play authorized HLS streams, retain permitted local state, and record a user’s chant. | Content authorization policy, canonical progress, or media files. |
+| Firebase Authentication | Authenticate the user through Google Sign-In and issue identity tokens. | Application profiles, roles, course access, or progress. |
+| NestJS application | Verify Firebase identity tokens; manage user profiles, catalog, learning plans, progress, feedback, and playback authorization; return application APIs and rewritten manifests. | High-bandwidth delivery of HLS segments or long-term media storage. |
+| MySQL | Store canonical relational application data and curated content metadata. | Audio files, HLS segments, or client session state. |
+| Google Cloud Storage | Hold private source media, generated HLS packages, synchronization metadata, and related immutable content assets. | Authentication, user progress, or public listing of protected assets. |
+| Cloud CDN | Deliver authorized encrypted HLS segments and other approved static content at scale. | User authentication decisions or application business rules. |
+| Content operations | Prepare, validate, package, and publish approved course content and audio packages. | Public user uploads or runtime client content editing. |
+
+## 5. Trust and Data Boundaries
+
+### 5.1 Identity and application access
+
+Firebase establishes user identity. The Flutter client sends the resulting Firebase ID token to the NestJS application. NestJS verifies that token server-side and applies Shruti Sadhana’s application rules before returning protected data or playback access.
+
+Firebase identity alone does not grant content access. The backend remains the policy-enforcement point for user state and future eligibility rules.
+
+### 5.2 Application data
+
+MySQL is the canonical store for user profiles, preferences after sign-in, learning plans, shloka-level progress, course structure, publication state, and feedback. The client may retain a small local copy of preferences and resume information to improve startup and recover from transient network loss; the backend remains authoritative after authentication.
+
+### 5.3 Media and synchronization data
+
+Audio is packaged as encrypted HLS and stored privately. Timing metadata is delivered as content metadata and is consumed by the client’s future synchronization engine to map playback position to the frozen learning-session UI. Detailed timing formats and player behaviour are deferred to the Media and Flutter Architecture documents.
+
+### 5.4 User chanting recordings
+
+Pilot recordings are created and played back on the user’s device. They are not part of the curated media pipeline and are not uploaded, shared, or used for evaluation in this phase. Exact platform storage and retention behaviour belongs to the Flutter Architecture document.
+
+## 6. Key System Flows
+
+### 6.1 Sign-in and session establishment
 
 ```text
-lib/features/<feature_name>/
-├── presentation/
-│   ├── screens/
-│   ├── widgets/
-│   └── providers/
-├── domain/
-│   ├── entities/
-│   └── repository_interfaces/
-└── data/
-    ├── models/
-    ├── data_sources/
-    └── repository_implementations/
+Flutter client -> Firebase Authentication: Google Sign-In
+Firebase Authentication -> Flutter client: Firebase ID token
+Flutter client -> NestJS application: authenticated API request
+NestJS application -> Firebase Authentication: verify token
+NestJS application -> MySQL: load or create application profile
+NestJS application -> Flutter client: application session and profile data
 ```
 
-- **presentation/**: Hosts screens, widgets layout, and Riverpod providers managing view-state.
-- **domain/**: Contains pure business objects (entities) and abstract definitions for interfaces. This layer is completely independent of external dependencies (e.g., API structures).
-- **data/**: Implements the abstract domain interfaces, handles REST requests (data sources), and parses JSON payload into model schemas.
-- *Constraint*: Empty folders must not be created. Only initialize directories (e.g., `data/`) when actual files are ready to occupy them.
+The guided demo remains available before the commitment point described in the frozen product scope. All post-demo application access requires successful sign-in.
 
----
-
-## 3. State Management & Dependency Injection
-
-- **Framework**: **Riverpod** is the frozen state management library.
-- **Providers**: State is managed via feature-scoped providers using the `@riverpod` code generation syntax.
-- **Business Logic**: Encapsulated within `Notifier` or `AsyncNotifier` classes to update state in response to user actions.
-- **Dependency Injection**: Riverpod providers act as the primary DI mechanism. Avoid introducing external DI libraries (such as `GetIt` or `Injectable`) unless explicitly required by a verified implementation blocker.
-- **Rule**: Avoid global mutable state. Keep providers scoped to the lifecycle of their matching screens.
-
----
-
-## 4. Navigation & Routing
-
-- **Framework**: **GoRouter** is the frozen navigation package.
-- **Configuration**: Managed centrally within `lib/app/router/` containing named routes.
-- **Guards**: Keep route guards minimal (e.g., redirecting unauthenticated users to SS-002 Onboarding).
-- **Named Routes**: Always navigate using names rather than path strings to ease routing refactoring.
-
-### Pilot Route Mapping
-
-| ID | Route Name | Path |
-| :--- | :--- | :--- |
-| **SS-001** | `splash` | `/` |
-| **SS-002** | `shloka_script_selection`| `/choose-script` |
-| **SS-002A**| `invocation` | `/let-begin` |
-| **SS-002B**| `vakratunda_demo` | `/demo-learning` |
-| **SS-003** | `home_returning` | `/home` |
-| **SS-003A**| `home_first_time` | `/home-first-time` |
-| **SS-004** | `library` | `/library` |
-| **SS-005** | `course_details` | `/course/:courseId` |
-| **SS-005A**| `learning_plan_setup` | `/course/:courseId/plan-setup` |
-| **SS-006** | `meet_your_guide` | `/course/:courseId/guide` |
-| **SS-007** | `all_shlokas_index` | `/course/:courseId/shlokas` |
-| **SS-008** | `learning_session` | `/learning/:shlokaId` |
-| **SS-009** | `samarpan` | `/learning/:shlokaId/samarpan` |
-| **SS-010** | `support_shruti_sadhana`| `/support` |
-| **SS-011** | `my_shruti_sadhana` | `/progress` |
-| **SS-012** | `settings` | `/settings` |
-
-
----
-
-## 5. Networking Flow & Data Flow
-
-We follow the Repository Pattern. All network requests must flow as follows:
+### 6.2 Content and progress
 
 ```text
-Screen (UI) 
-   ↓
-Provider (State Management)
-   ↓
-Repository Interface (Domain Layer)
-   ↓
-Repository Implementation (Data Layer)
-   ↓
-Remote Data Source (Network client)
-   ↓
-API (NestJS Backend)
+Flutter client -> NestJS application: request course, lesson, plan, or progress
+NestJS application -> MySQL: read or update canonical application data
+NestJS application -> Flutter client: typed application response
 ```
 
-- **Networking Client**: Built on **Dio** for REST client capabilities.
-- **DTO Mapping**: JSON parsing and mapping must occur strictly inside the Data layer (e.g., inside the repository implementation using mapping extension methods).
-- **Rule**: The UI must never consume raw JSON or model classes directly. It must only interact with clean Domain Entities.
+The permanent learning unit is the shloka. A learning session is a temporary presentation container, not the unit used to calculate canonical progress.
 
----
-
-## 6. Local Storage Boundaries
-
-- **Allowed Scope**: Local storage must only be used for user preferences and lightweight application states.
-- **Examples of stored fields**:
-  - Authentication JWT access and refresh tokens.
-  - Display script preference (Devanagari vs. English Transliteration).
-  - Language selection.
-  - Custom UI preferences (font scale, dark mode).
-  - Resume state (last opened course ID, current shloka ID).
-  - Onboarding milestone completions.
-- **No Heavy Caching**: Do not implement extensive local audio caching, offline sync, or database replication protocols. Media assets must remain strictly streamed online.
-
----
-
-## 7. Shared Component Boundaries
-
-To prevent dependency creep and maintain a clean separation of concerns:
-- **`core/`**: Restricted to infrastructural utilities (e.g., HTTP clients, storage keys, date format helpers). It must contain no UI widgets or business logic.
-- **`shared/`**: Houses reusable visual components (e.g., app bars, custom buttons, layout grids) which are completely stateless.
-- **`features/`**: All business logic, feature states, course rules, and screen layouts must remain isolated within features. Features must never import code directly from another feature (inter-feature interaction must happen via shared contract interfaces or shared providers).
-
----
-
-## 8. Environment Configuration
-
-- **Environments**: Supported environments are **Local**, **Staging**, and **Production**.
-- **Execution**: Configured at build time via compiler flags:
-  `--dart-define` or `--dart-define-from-file`
-- **Rule**: Never commit sensitive API credentials, environment URLs, or signing keys directly to the repository codebase.
-
----
-
-## 9. Logging & Error Handling
-
-- **Logging**: Console logging during development uses the `logger` package to prevent exposing sensitive runtime parameters in production releases.
-- **Crash Reports**: Integration of **Firebase Crashlytics** for remote crash logging and reporting.
-- **Error UI**: Implement a centralized handler that catches failures and presents user-friendly alert views. Keep detailed diagnostic messages inside developer logs only.
-
----
-
-## 10. Naming Conventions
-
-- **File Names**: `snake_case` (e.g., `learning_session_screen.dart`, `shloka_repository.dart`).
-- **Class Names**: `PascalCase` (e.g., `LearningSessionScreen`, `ShlokaRepository`).
-- **Variable & Method Names**: `camelCase` (e.g., `currentShlokaId`, `fetchCourseList()`).
-- **Suffix Rules**:
-  - Screen views: Suffix with `Screen` (e.g., `SettingsScreen`).
-  - Repository interfaces: Suffix with `Repository` (e.g., `CourseRepository`).
-  - Data transfer objects: Suffix with `Model` (e.g., `CourseModel`).
-  - Riverpod state handlers: Suffix with `Provider` or follow `@riverpod` generation class names.
-
----
-
-## 11. Testing Strategy
-
-- **Pilot Scope**: Exclude heavy integration suites or complex test framework dependencies.
-- **Priority**: Focus testing on critical business logic widgets and critical path integration handlers (e.g., correct parsing of script preferences and auth tokens initialization).
-
----
-
-## 12. Architectural Constraints (Excluded Features)
-
-The following components are **intentionally excluded** from the Pilot Release architecture:
-- Microservices, event bus setups, event sourcing frameworks, or event-driven CQRS.
-- Complex runtime plug-in loaders.
-- Offline-first database replication and local encryption storage.
-- Runtime feature flags services.
-- Over-engineered generic base repository layers.
-
----
-
-## 13. Audio & Synchronization Architecture
-
-The audio capabilities represent the core learning loop of Shruti Sadhana. We define a clean separation of concerns at the architectural boundary, separating audio execution from UI rendering and timing conversion.
-
-### 13.1 Audio Modules & Responsibilities
-
-The audio architecture is composed of four decoupled functional modules:
-
-- **Playback Engine**: Responsible for playing the lesson audio files from remote streams, managing playback state (play, pause, stop, seek), and emitting real-time playback updates.
-- **Synchronization Engine**: Listens to the current playback position and maps it to the active text segment (Section, Line, or Shloka/Word) using course-specific synchronization metadata.
-- **Recording Engine**: Interacts with the device microphone to record the user's chanting, saves the recording locally, and provides playback controls for self-evaluation.
-- **Session Controller**: The coordinator for the active `Learning Session` (SS-008). It orchestrates state between the Playback, Sync, and Recording engines, and triggers progress updates.
-
-### 13.2 Audio Synchronization Model
-
-The Synchronization Engine abstracts timing mapping away from UI components.
-
-| Topic | Decision |
-| :--- | :--- |
-| **Purpose** | Provide synchronized highlighting and navigation during guided chanting. |
-| **Source of Truth** | Server-provided synchronization metadata packaged with each lesson. |
-| **UI Responsibility** | Render synchronized highlighting and update playback position. |
-| **Audio Engine Responsibility** | Play audio and emit playback position updates. |
-| **Sync Engine Responsibility** | Convert playback position into the active section/line/word based on available metadata. |
-| **Extensibility** | Designed to support lesson-, line-, and word-level synchronization. Pilot uses the synchronization granularity required by the prepared content. |
-| **Independence** | UI should consume synchronization events rather than implementing timing logic. |
-
-### 13.3 High-Level Data Flow
+### 6.3 Secure audio playback
 
 ```text
-Learning Session (SS-008)
-        ↓
-Audio Controller
-        ↓
-Playback Position Stream
-        ↓
-Synchronization Engine
-        ↓
-Current Highlight State
-        ↓
-UI Rendering
+Flutter client -> NestJS application: request authorized lesson playback
+NestJS application -> MySQL: validate user and lesson availability
+NestJS application -> GCS/CDN signing service: obtain short-lived asset access
+NestJS application -> Flutter client: rewritten, short-lived HLS manifest
+Flutter client -> Cloud CDN: fetch encrypted HLS segments and key material
+Cloud CDN -> Flutter client: protected media bytes
 ```
 
-### 13.4 Deferred Audio Details
-The following implementation-level items are deferred:
-- Specific timestamp file formats and JSON schemas.
-- Word-timing structures and line interpolation algorithms.
-- Playback drift correction and audio buffering strategies.
-- Future AI pronunciation alignment.
+The rewritten manifest uses short-lived signed URLs because native and browser HLS subrequests cannot reliably carry the client’s authorization header. The backend may process a manifest but must not proxy media segments. See the validated [media security POC](../09-research/media-security-poc/Executive-Summary.md).
 
----
+### 6.4 Content publishing
 
-## 14. Master Screen & Component Inventory
+```text
+Content operations -> packaging process: approved recordings and verified text
+Packaging process -> GCS: private encrypted HLS package and metadata
+Content operations -> NestJS application/MySQL: publication metadata and availability
+NestJS application -> Flutter client: published catalog and lesson configuration
+```
 
-These stable identifiers serve as the canonical references for coding, routing, design, and testing.
+Only curated, approved content may enter this flow.
 
-### 14.1 Primary Screen Inventory
+## 7. Caching and Offline Boundary
 
-| ID | Screen | Status | Parent / Trigger | Primary Purpose / Notes |
-| :--- | :--- | :--- | :--- | :--- |
-| **SS-001** | Splash | ✅ Design Frozen | — | Established brand/emotion, simplified layout |
-| **SS-002** | Shloka Script Selection | ✅ Design Frozen | Splash | Allows the user to choose how Sanskrit shlokas will be displayed throughout the app. Supported scripts: Devanagari, English Transliteration. Extensible architecture. |
-| **SS-002A** | Invocation (Let's Begin) | ✅ Design Frozen | SS-002 | Transition / mental prep illustration card before first demo |
-| **SS-002B** | Vakratunda Demo Learning | ✅ Uses Session UI | SS-002A | Initial guided experience before mandatory login commitment |
-| **SS-003** | Home (Returning User) | ✅ Design Frozen | Auth / Home | Continue learning hero, Today's Learning, Native Ad, separated stats |
-| **SS-003A** | Home (First Time User) | ✅ Design Frozen | Auth / Setup | Initial clean dashboard screen, Start Journey button |
-| **SS-004** | Learning Library | ✅ Design Frozen | Home | Browse courses (Lalita Sahasranama pilot) |
-| **SS-005** | Course Details | ✅ Design Frozen | Library | Overview, sections checklist list |
-| **SS-005A** | Learning Plan Setup | ✅ Design Frozen | SS-003A | Wizard selecting learning pace (Slow & Steady vs. Balanced) |
-| **SS-006** | Meet Your Guide | ✅ Design Frozen | Course Details | Teacher details, bio, philosophy, trust indicators (no metrics) |
-| **SS-007** | All Shlokas Index | ✅ Design Frozen | Course Details | Browse and navigate all Shlokas for flexibility |
-| **SS-008** | Learning Session | ✅ Design Frozen | Index / Home | Core learning experience for a single shloka, including guided audio playback, chanting practice, and self-recording for review |
-| **SS-009** | Samarpan | ✅ Design Frozen | SS-008 | A devotional completion screen allowing the learner to mentally offer the fruits of their chanting before returning to the learning journey |
-| **SS-010** | Support Shruti Sadhana | ✅ Design Frozen | Samarpan / Home | Invites devotees to voluntarily support the continued development and preservation of Shruti Sadhana (periodic trigger) |
-| **SS-011** | My Shruti Sadhana | ✅ Design Frozen | Home | Progress metrics, spiritual illustrations of Havan Kund, Mala, Agarbatti, Manuscript |
-| **SS-012** | Settings | ✅ Design Frozen | Home | Manage reminders, learning plan, script, help & feedback |
+The pilot does not offer offline downloads, offline lessons, or persistent media libraries. A user must be online to receive playback authorization and obtain the protected stream.
 
-### 14.2 Secondary / Utility Screens
+Android may use a bounded, encrypted, player-managed cache only when it is technically required to provide smooth streaming. This cache is an implementation detail with the following limits:
 
-| ID | Screen / Element | Trigger / Opened From | Notes |
-| :--- | :--- | :--- | :--- |
-| **SS-BS-001** | Script Selection Bottom Sheet | Learning Session (SS-008) | Select Devanagari vs. English Transliteration |
-| **SS-BS-002** | Font Size Bottom Sheet | Learning Session (SS-008) | Adjust stotra text display scale |
-| **SS-BS-003** | Recording Options Bottom Sheet | Learning Session (SS-008) | Delete, rename, or save chanting recordings |
-| **SS-104** | Native Ad Card | Reusable layout card | Placed on Home Dashboard (SS-003) |
-| **SS-105** | Support Dialog | Future enhancement | Respectful donation trigger (non-blocking) |
-| **SS-106** | Error / Offline State | Reusable visual template | Shown on network failure or offline states |
-| **SS-107** | Empty State | Reusable visual template | Shown on empty Library, empty Progress log |
+- It may contain only already-authorized HLS segments needed for near-term playback and transient network resilience.
+- It must be size- and retention-bounded, encrypted at rest where the platform supports it, and evicted automatically by the player or app.
+- It must not expose a user-visible download, make a lesson intentionally available offline, or bypass fresh playback authorization for a later session.
+- The responsive web client must not depend on equivalent persistent caching behaviour.
 
-### 14.3 Dialogs / Bottom Sheets
+This clarification permits reliable playback without changing the decision in ADR-004. Cache policy and platform implementation will be specified in the Flutter and Media Architecture documents.
 
-| ID | Component Name | Description / Placement |
-| :--- | :--- | :--- |
-| **SS-BS-001** | Script Selection | Bottom sheet to pick active Sanskrit script preference |
-| **SS-BS-002** | Font Size | Bottom sheet to adjust typography text scale |
-| **SS-BS-003** | Recording Options | Bottom sheet containing options to manage user recordings |
+## 8. Deployment Environments
 
-### 14.4 Reusable UI Components
+| Environment | Purpose | Required external services |
+| --- | --- | --- |
+| Local | Deterministic development and automated tests. | No cloud services; use local/mock auth, storage, media, and data drivers as appropriate. |
+| Staging | Integration validation before release. | Isolated Firebase, database, storage, CDN, and backend resources. |
+| Production | Pilot user traffic. | Production Google Cloud infrastructure and Firebase project. |
 
-| ID | Component Name | Purpose / Placement |
-| :--- | :--- | :--- |
-| **SS-C-001** | Sacred Hero Header | Greeting bar displays devotional salutation |
-| **SS-C-002** | Continue Learning Card | Dashboard card loading the user's last shloka |
-| **SS-C-003** | Sacred Stat Card | Simple visual counters for completed chanting duration |
-| **SS-C-004** | Manuscript Card | Traditional border card holding stotra text |
-| **SS-C-005** | Audio Player | Basic normal-speed track streaming bar |
-| **SS-C-006** | Recording Card | Chanting mic controls and local file list item |
-| **SS-C-007** | Samarpan Button | Primary maroon action button initiating offering |
-| **SS-C-008** | Progress Tile | Individual course section checklist item |
-| **SS-C-009** | Native Ad Card | Reusable Google Native Ad container card |
-| **SS-C-010** | Support Card | Contribution call-to-action layout |
-| **SS-C-011** | Section Header | Thin-bordered headers containing conch details |
-| **SS-C-012** | Bottom Navigation | App navigation bar (Home, Library, Progress, Settings) |
+Production secrets, service credentials, signing keys, and environment URLs must not be committed to source control. Configuration mechanics are deferred to the relevant implementation architecture documents.
 
+## 9. Explicit Non-Goals for the Pilot
+
+- Microservices, event buses, event sourcing, CQRS, and separate media-streaming services.
+- Backend proxying of audio segments.
+- Offline downloads, offline-first sync, or persistent media libraries.
+- Native iOS application delivery.
+- Public creator uploads, user-generated course content, or content moderation workflows.
+- AI pronunciation scoring, subscriptions, payments, notifications, and advanced analytics.
+
+## 10. Open Design Work
+
+The following items are intentionally deferred, not undecided product work:
+
+| Next document | Will define |
+| --- | --- |
+| Flutter Architecture | Feature structure, state, routing, client storage, recording lifecycle, player integration, and Android cache mechanics. |
+| NestJS Architecture | Module boundaries, token verification, authorization services, content operations boundary, and local/production drivers. |
+| Database Design | Relational entities, ownership, constraints, and migrations. |
+| API Contracts | Request/response schemas, error conventions, and versioning. |
+| Media Architecture | HLS packaging, manifest rewriting, metadata, cache behaviour, expiry, and operational pipeline. |
+| Security Architecture | Threat model, token and signing-key handling, access controls, logging, and incident boundaries. |
+
+## 11. Related Documents
+
+- [Project context](../00-project/project-context.md)
+- [Phase 0 pilot scope](../01-product/MVP-SCOPE.md)
+- [Architecture decisions](../08-decisions/INDEX.md)
+- [Media security POC](../09-research/media-security-poc/INDEX.md)
+- [Audio synchronization placeholder](audio-synchronization.md)

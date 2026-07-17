@@ -4,9 +4,9 @@ Purpose: Feature inventory, feature status, dependencies, and links to detailed 
 
 ## Current Documents
 
-- [FEATURE_INDEX.md](FEATURE_INDEX.md) - MVP feature inventory, future features, dependency flow, and governance notes.
+- [PRODUCT_BACKLOG.md](PRODUCT_BACKLOG.md) - Canonical inventory of approved, planned, deferred, and rejected product, technical, and quality work.
+- [FEATURE_INDEX.md](FEATURE_INDEX.md) - Navigation and backlog governance notes.
 
 ## Notes
 
 Every MVP feature should eventually have a corresponding FRD. Creating or expanding FRDs is outside Documentation Milestone 1 unless explicitly requested.
-
