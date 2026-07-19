@@ -10,6 +10,7 @@ Purpose: Stable project context, repository guidance, accepted decisions, and ch
 - [docs-structure.md](docs-structure.md) - intended documentation repository structure.
 - [glossary.md](glossary.md) - canonical domain terminology and definitions.
 - [changelog.md](changelog.md) - documentation change history.
+- [IMPLEMENTATION_BRIEFING.md](IMPLEMENTATION_BRIEFING.md) - project understanding summary: architecture, module map, feature map, vertical slice roadmap, risks, and implementation readiness.
 
 ## Notes
 
